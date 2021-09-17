@@ -1,0 +1,120 @@
+Card Title,Variant,Coins
+Admiral,1 VP,5
+Pinnace,4 Sword,3
+Priest,1 VP,4
+Governor,0 VP,8
+Flute,5 Sword,4
+Mademoiselle,2 VP,7
+Trader,Green + 1 VP,3
+Galleon,2 Sword,1
+Skiff,1 Sword,1
+Frigate,1 Sword,1
+Settler,1 VP,4
+Mademoiselle,3 VP,9
+Pinnace,1 Sword,2
+Expedition,Anchor Pair,2
+Pinnace,2 Sword,2
+Galleon,Pirate,4
+Pirate,2 VP,7
+Priest,1 VP,4
+Expedition,Cross Pair,2
+Flute,1 Sword,1
+Pirate,1 VP,5
+Sailor,1 VP,3
+Frigate,Pirate,4
+Priest,1 VP,4
+Flute,5 Sword,3
+Jester,3 VP,9
+Pirate,3 VP,9
+Flute,2 Sword,2
+Skiff,1 Sword,2
+Galleon,4 Sword,2
+Admiral,3 VP,9
+Pinnace,4 Sword,3
+Skiff,1 Sword,1
+Sailor,2 VP,5
+Trader,Blue + 2 VP,5
+Sailor,1 VP,3
+Trader,Black + 1 VP,3
+Settler,1 VP,4
+Governor,0 VP,8
+Skiff,3 Sword,2
+Trader,Red + 1 VP,3
+Pinnace,1 Sword,1
+Sailor,2 VP,5
+Settler,1 VP,4
+Galleon,7 Sword,3
+Galleon,4 Sword,2
+Captain,1 VP,4
+Flute,1 Sword,1
+Expedition,Cross Pair + House,3
+Frigate,3 Sword,2
+Skiff,3 Sword,3
+Flute,1 Sword,2
+Tax Increase,Max Sword,1
+Priest,1 VP,4
+Galleon,Pirate,3
+Tax Increase,Min VP,1
+Governor,0 VP,8
+Captain,1 VP,4
+Sailor,1 VP,3
+Skiff,3 Sword,2
+Galleon,2 Sword,1
+Captain,1 VP,4
+Pinnace,2 Sword,2
+Frigate,1 Sword,1
+Frigate,Pirate,3
+Jack of All Trades,1 VP,6
+Admiral,3 VP,9
+Tax Increase,Min VP,1
+Tax Increase,Max Sword,1
+Trader,Red + 1 VP,3
+Jester,2 VP,7
+Jester,1 VP,5
+Mademoiselle,2 VP,7
+Frigate,6 Sword,3
+Flute,2 Sword,2
+Pinnace,1 Sword,1
+Sailor,1 VP,3
+Trader,Blue + 1 VP,3
+Admiral,2 VP,7
+Skiff,1 Sword,1
+Galleon,2 Sword,1
+Admiral,2 VP,7
+Pinnace,4 Sword,4
+Jack of All Trades,1 VP,6
+Expedition,House Pair,2
+Galleon,4 Sword,2
+Priest,1 VP,4
+Flute,2 Sword,3
+Pinnace,1 Sword,1
+Settler,1 VP,4
+Governor,0 VP,8
+Sailor,1 VP,3
+Captain,1 VP,4
+Frigate,3 Sword,2
+Frigate,1 Sword,1
+Expedition,Anchor Pair + House,3
+Captain,1 VP,4
+Galleon,7 Sword,3
+Flute,1 Sword,1
+Frigate,3 Sword,2
+Admiral,2 VP,7
+Skiff,5 Sword,4
+Settler,1 VP,4
+Mademoiselle,3 VP,9
+Skiff,5 Sword,3
+Sailor,1 VP,3
+Flute,5 Sword,3
+Sailor,1 VP,3
+Trader,Black + 1 VP,3
+Pinnace,2 Sword,3
+Trader,Yellow + 2 VP,5
+Frigate,6 Sword,3
+Skiff,5 Sword,3
+Jack of All Trades,1 VP,6
+Sailor,3 VP,7
+Trader,Yellow + 1 VP,3
+Trader,Green + 1 VP,3
+Jester,2 VP,7
+Jester,2 VP,7

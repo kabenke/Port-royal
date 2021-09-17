@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AIPlayer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">AIPlayer.java</span></div><h1>AIPlayer.java</h1><pre class="source lang-java linenums">package model;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * This is a class that represents an AI-Player.
+ */
+public class AIPlayer extends Player implements Serializable {
+
+	/**
+	 * ArrayList to keep track of the remaining cards
+	 */
+	private ArrayList&lt;Card&gt; remainCards;
+
+	/**
+	 * ArrayList to keep track of the discarded cards
+	 */
+	private ArrayList&lt;Card&gt; discardedCards;
+
+	/**
+	 * Constructor that creates an AI-Player
+	 * @param playerType the difficulty of the AI
+	 */
+<span class="nc" id="L24">	public AIPlayer(PlayerType playerType){</span>
+<span class="nc" id="L25">		this.name = &quot;&quot;;</span>
+<span class="nc" id="L26">		this.playerType = playerType;</span>
+<span class="nc" id="L27">		this.moveCount = 0;</span>
+<span class="nc" id="L28">		this.goldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L29">		this.nonGoldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L30">		this.eligibleForHighscore = true;</span>
+<span class="nc" id="L31">		this.traderBonus = new int[5];</span>
+<span class="nc" id="L32">		this.victoryPoints = 0;</span>
+<span class="nc" id="L33">		this.didExp = false;</span>
+<span class="nc" id="L34">		this.swords = 0;</span>
+<span class="nc" id="L35">	}</span>
+
+	/**
+	 * clones AIPlayer object
+	 * @return a AIPlayer object that represents the current state of the calling one
+	 */
+	@Override
+	public AIPlayer clone() {
+<span class="nc" id="L43">		AIPlayer clonedPlayer = new AIPlayer(this.playerType);</span>
+<span class="nc" id="L44">		clonedPlayer.name = this.name;</span>
+<span class="nc" id="L45">		clonedPlayer.moveCount = this.moveCount;</span>
+<span class="nc" id="L46">		clonedPlayer.eligibleForHighscore = this.eligibleForHighscore;</span>
+<span class="nc" id="L47">		clonedPlayer.victoryPoints = this.victoryPoints;</span>
+<span class="nc" id="L48">		clonedPlayer.didExp = this.didExp;</span>
+<span class="nc" id="L49">		clonedPlayer.swords = this.swords;</span>
+
+<span class="nc" id="L51">		ArrayList&lt;Card&gt; clonedGoldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">		for(Card card : goldCards) {</span>
+<span class="nc" id="L53">			clonedGoldCards.add(card.clone());</span>
+<span class="nc" id="L54">		}</span>
+<span class="nc" id="L55">		clonedPlayer.goldCards = clonedGoldCards;</span>
+
+<span class="nc" id="L57">		ArrayList&lt;Card&gt; clonedNonGoldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L58" title="All 2 branches missed.">		for(Card card : nonGoldCards) {</span>
+<span class="nc" id="L59">			clonedNonGoldCards.add(card.clone());</span>
+<span class="nc" id="L60">		}</span>
+<span class="nc" id="L61">		clonedPlayer.nonGoldCards = clonedNonGoldCards;</span>
+
+<span class="nc" id="L63">		int[] clonedTraderBonus = new int[traderBonus.length];</span>
+<span class="nc bnc" id="L64" title="All 2 branches missed.">		for(int i = 0; i &lt; traderBonus.length; i++) {</span>
+<span class="nc" id="L65">			clonedTraderBonus[i] = traderBonus[i];</span>
+		}
+<span class="nc" id="L67">		clonedPlayer.traderBonus = clonedTraderBonus;</span>
+
+<span class="nc" id="L69">		ArrayList&lt;Card&gt; clonedRemainCards = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		for(Card card : remainCards) {</span>
+<span class="nc" id="L71">			clonedRemainCards.add(card.clone());</span>
+<span class="nc" id="L72">		}</span>
+<span class="nc" id="L73">		clonedPlayer.remainCards = clonedRemainCards;</span>
+
+<span class="nc" id="L75">		ArrayList&lt;Card&gt; clonedDiscardedCards = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		for(Card card : remainCards) {</span>
+<span class="nc" id="L77">			clonedDiscardedCards.add(card.clone());</span>
+<span class="nc" id="L78">		}</span>
+<span class="nc" id="L79">		clonedPlayer.discardedCards = clonedDiscardedCards;</span>
+
+<span class="nc" id="L81">		return clonedPlayer;</span>
+	}
+
+	/**
+	 * get-Method remainCards
+	 * @return the remainCards ArrayList
+	 */
+	public ArrayList&lt;Card&gt; getRemainCards() {
+<span class="nc" id="L89">		return remainCards;</span>
+	}
+
+	/**
+	 * set-Method remainCards
+	 * @param remainCards the List of remaining Cards
+	 */
+	public void setRemainCards(ArrayList&lt;Card&gt; remainCards) {
+<span class="nc" id="L97">		this.remainCards = remainCards;</span>
+<span class="nc" id="L98">	}</span>
+
+	/**
+	 * get-Method discardedCards
+	 * @return the discardedCards ArrayList
+	 */
+	public ArrayList&lt;Card&gt; getDiscardedCards() {
+<span class="nc" id="L105">		return discardedCards;</span>
+	}
+
+	/**
+	 * set-Method discardCards
+	 * @param discardedCards the List of discarded Cards
+	 */
+	public void setDiscardedCards(ArrayList&lt;Card&gt; discardedCards) {
+<span class="nc" id="L113">		this.discardedCards = discardedCards;</span>
+<span class="nc" id="L114">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

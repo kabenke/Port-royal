@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>IOController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">IOController.java</span></div><h1>IOController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.*;
+import java.io.*;
+
+/**
+ * This class is used to Load and Save the moves.
+ */
+public class IOController {
+
+    /**
+     * save file for save/load
+     */
+<span class="fc" id="L14">    private static final File SAVE_FILE = new File(&quot;SAVE_FILE&quot;);</span>
+
+    /**
+     * The Main controller
+     */
+    private MainController mainController;
+
+    /**
+     * Constructor for the main controller
+     * @param mainController Constructor for the main controller
+     */
+<span class="fc" id="L25">    public IOController(MainController mainController) {</span>
+<span class="fc" id="L26">        this.mainController = mainController;</span>
+<span class="fc" id="L27">    }</span>
+
+    /**
+     * Ability to load the game state
+     */
+    public void load() {
+<span class="pc bpc" id="L33" title="1 of 2 branches missed.">        if (!SAVE_FILE.exists()){</span>
+<span class="nc" id="L34">            return;</span>
+        }
+        try {
+<span class="fc" id="L37">            ObjectInputStream stream = new ObjectInputStream(new FileInputStream(SAVE_FILE));</span>
+<span class="fc" id="L38">            PortRoyal portRoyal = (PortRoyal) stream.readObject();</span>
+<span class="fc" id="L39">            mainController.setPortRoyal(portRoyal);</span>
+<span class="fc" id="L40">            stream.close();</span>
+
+<span class="nc" id="L42">        } catch (Exception ioException) {</span>
+<span class="nc" id="L43">            ioException.printStackTrace();</span>
+<span class="nc" id="L44">            System.out.println(&quot;error while loading&quot;);</span>
+<span class="fc" id="L45">        }</span>
+
+<span class="fc" id="L47">    }</span>
+
+    /**
+     * Ability to save the game state
+     */
+    public void save() {
+        try{
+<span class="nc" id="L54">            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream(SAVE_FILE));</span>
+<span class="nc" id="L55">            stream.writeObject(mainController.getPortRoyal());</span>
+<span class="nc" id="L56">            stream.close();</span>
+        }
+<span class="nc" id="L58">        catch (IOException ioException){</span>
+<span class="nc" id="L59">            ioException.printStackTrace();</span>
+<span class="nc" id="L60">            System.out.println(&quot;error while saving&quot;);</span>
+<span class="nc" id="L61">        }</span>
+
+<span class="nc" id="L63">    }</span>
+
+    /**
+     * get-Method mainController
+     * @return mainController
+     */
+<span class="nc" id="L69">    public MainController getMainController() {return mainController;}</span>
+
+    /**
+     * set-Method mainController
+     * @param mainController the mainController
+     */
+    public void setMainController(MainController mainController) {
+<span class="nc" id="L76">        this.mainController = mainController;</span>
+<span class="nc" id="L77">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

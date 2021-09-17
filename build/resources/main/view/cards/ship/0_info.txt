@@ -1,0 +1,4 @@
+file name format:
+color_coins_saber
+
+*saber dead skull value = 30

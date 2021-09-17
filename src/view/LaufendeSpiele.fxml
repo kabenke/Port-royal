@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="366.0" fitWidth="921.0" layoutX="176.0" layoutY="191.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background5.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#onBackClick" onMouseEntered="#onBackEnter" onMouseExited="#onBackExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/arrowLeftButton.png" />
+         </image>
+      </ImageView>
+      <Text layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Laufende Spiele" textAlignment="CENTER" wrappingWidth="1280.0">
+         <font>
+            <Font name="Sitka Small" size="45.0" />
+         </font>
+      </Text>
+      <Text fx:id="time1" layoutX="184.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names1" layoutX="365.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text layoutX="184.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zeit" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="365.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" textAlignment="CENTER" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text layoutX="928.0" layoutY="180.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Runde" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small Bold" size="17.0" />
+         </font>
+      </Text>
+      <Text fx:id="round1" layoutX="928.0" layoutY="215.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names2" layoutX="365.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names3" layoutX="365.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names4" layoutX="365.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names5" layoutX="365.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names6" layoutX="365.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names7" layoutX="365.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names8" layoutX="365.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names9" layoutX="365.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="names10" layoutX="365.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Langername, Langername, Langername, Langername, Langername" wrappingWidth="549.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round2" layoutX="928.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round3" layoutX="928.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round4" layoutX="928.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round5" layoutX="928.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round6" layoutX="928.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round7" layoutX="928.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round8" layoutX="928.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round9" layoutX="928.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="round10" layoutX="928.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="CENTER" wrappingWidth="68.0582275390625">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time2" layoutX="184.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time3" layoutX="184.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time4" layoutX="184.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time5" layoutX="184.0" layoutY="335.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time6" layoutX="184.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time7" layoutX="184.0" layoutY="395.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time8" layoutX="184.0" layoutY="425.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time9" layoutX="184.0" layoutY="455.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <Text fx:id="time10" layoutX="184.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="22.03.2021 20:15" textAlignment="CENTER" wrappingWidth="172.953125">
+         <font>
+            <Font name="Sitka Small" size="16.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="play1" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="198.0" onMouseClicked="#onPlay1Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play2" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="228.0" onMouseClicked="#onPlay2Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play3" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="258.0" onMouseClicked="#onPlay3Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play4" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="288.0" onMouseClicked="#onPlay4Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play5" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="318.0" onMouseClicked="#onPlay5Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play6" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="348.0" onMouseClicked="#onPlay6Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play7" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="378.0" onMouseClicked="#onPlay7Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play8" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="408.0" onMouseClicked="#onPlay8Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play9" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="438.0" onMouseClicked="#onPlay9Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="play10" fitHeight="25.0" fitWidth="25.0" layoutX="1010.0" layoutY="468.0" onMouseClicked="#onPlay10Click" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/playButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete1" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="198.0" onMouseClicked="#onDelete1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete2" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="228.0" onMouseClicked="#onDelete2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete3" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="258.0" onMouseClicked="#onDelete3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete4" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="288.0" onMouseClicked="#onDelete4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete5" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="318.0" onMouseClicked="#onDelete5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete6" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="348.0" onMouseClicked="#onDelete6" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete7" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="378.0" onMouseClicked="#onDelete7" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete8" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="408.0" onMouseClicked="#onDelete8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete9" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="438.0" onMouseClicked="#onDelete9" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="delete10" fitHeight="25.0" fitWidth="25.0" layoutX="1042.0" layoutY="468.0" onMouseClicked="#onDelete10" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="downButton" fitHeight="25.0" fitWidth="25.0" layoutX="1111.0" layoutY="354.0" onMouseClicked="#onDownClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/bottom.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="topButton" fitHeight="25.0" fitWidth="25.0" layoutX="1111.0" layoutY="324.0" onMouseClicked="#onTopClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/top.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>

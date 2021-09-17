@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MoveController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">MoveController.java</span></div><h1>MoveController.java</h1><pre class="source lang-java linenums">package controller;
+
+import abstractuserinterface.GameAUI;
+import model.*;
+
+import java.util.ArrayList;
+
+/**
+ * controller to control move logic.
+ */
+public class MoveController {
+
+	/**
+	 * The MainController
+	 */
+	private MainController mainController;
+
+	/**
+	 * helping object
+	 */
+	private MoveControllerHelp moveControllerHelp;
+
+	/**
+	 * The GameAUI
+	 */
+	private GameAUI gameAUI;
+
+	/**
+	 * constructor that initializes all attributes of MoveController
+	 * @param mainController the MainController of the project
+	 */
+<span class="fc" id="L32">	public MoveController(MainController mainController) {</span>
+<span class="fc" id="L33">		this.mainController = mainController;</span>
+<span class="fc" id="L34">		this.moveControllerHelp = new MoveControllerHelp(this);</span>
+<span class="fc" id="L35">	}</span>
+
+	/**
+	 * method to sell ships from the harbour display
+	 * @param move the move the card got picked up in
+	 * @param turn the turn that the move is in
+	 */
+	public void sellShip(Move move, Turn turn) {
+
+<span class="nc bnc" id="L44" title="All 2 branches missed.">		if(moveControllerHelp.hasMoreMoves(move.getPlayer(), turn)){</span>
+
+			Card cardToPayActive;
+<span class="nc bnc" id="L47" title="All 2 branches missed.">			if(move.getCard() instanceof Ship) {</span>
+
+<span class="nc bnc" id="L49" title="All 2 branches missed.">				if(turn.getHarbourDisplay().remove(move.getCard())) {</span>
+<span class="nc" id="L50">					turn.getMatch().toDiscardPile(move.getCard());</span>
+				}
+
+<span class="nc" id="L53">				int traderBonus = 0;</span>
+<span class="nc" id="L54">				Player player = move.getPlayer();</span>
+<span class="nc" id="L55">				Ship card = (Ship)move.getCard();</span>
+
+<span class="nc bnc" id="L57" title="All 6 branches missed.">				switch (card.getColor()) {</span>
+<span class="nc" id="L58">					case BLUE: traderBonus += player.getTraderBonus()[0];</span>
+<span class="nc" id="L59">						break;</span>
+
+<span class="nc" id="L61">					case RED: traderBonus += player.getTraderBonus()[1];</span>
+<span class="nc" id="L62">						break;</span>
+
+<span class="nc" id="L64">					case GREEN: traderBonus += player.getTraderBonus()[2];</span>
+<span class="nc" id="L65">						break;</span>
+
+<span class="nc" id="L67">					case BLACK: traderBonus += player.getTraderBonus()[3];</span>
+<span class="nc" id="L68">						break;</span>
+
+<span class="nc" id="L70">					case YELLOW: traderBonus += player.getTraderBonus()[4];</span>
+<span class="nc" id="L71">						break;</span>
+
+					default: /* No trader so cant happen */
+				}
+
+<span class="nc" id="L76">				moveControllerHelp.adjustCoins(move.getPlayer(), move.getCard().getCoins() + traderBonus, turn);</span>
+
+<span class="nc bnc" id="L78" title="All 2 branches missed.">				if (!move.getPlayer().equals(turn.getActivePlayer())) {</span>
+<span class="nc" id="L79">					cardToPayActive = move.getPlayer().getGoldCards().remove(0);</span>
+<span class="nc" id="L80">					turn.getActivePlayer().addCard(cardToPayActive);</span>
+				}
+
+<span class="nc" id="L83">			}</span>
+<span class="nc" id="L84">			else {throw new IllegalArgumentException(&quot;not a Ship Card&quot;);}</span>
+		}
+<span class="nc" id="L86">		moveControllerHelp.adjustMoveCount(turn);</span>
+<span class="nc" id="L87">	}</span>
+
+	/**
+	 * method to fight a ship
+	 * @param move the move the card got picked up in
+	 * @param turn the turn that the move is in
+	 */
+	public void fightShip(Move move, Turn turn){
+<span class="nc bnc" id="L95" title="All 2 branches missed.">		if(move.getCard() instanceof Ship){</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">			if(((Ship) move.getCard()).getSwords() &lt;= turn.getActingPlayer().getSwords()) {</span>
+<span class="nc bnc" id="L97" title="All 2 branches missed.">				if(turn.getHarbourDisplay().remove(move.getCard())) {</span>
+<span class="nc" id="L98">					turn.getMatch().toDiscardPile(move.getCard());</span>
+				}
+			}
+		}
+		else{
+<span class="nc" id="L103">			throw new IllegalArgumentException(&quot;not a Ship Card&quot;);</span>
+		}
+<span class="nc" id="L105">	}</span>
+
+	/**
+	 * to pay a person and consider the activePlayer coin
+	 * @param move current move of the hiring player
+	 * @param turn current turn
+	 */
+	public void hireCrew(Move move, Turn turn) {
+
+<span class="nc bnc" id="L114" title="All 2 branches missed.">		if(moveControllerHelp.hasMoreMoves(move.getPlayer(), turn)) {</span>
+
+			Card cardToPayActive;
+<span class="nc" id="L117">			Person person = (Person) move.getCard();</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">			if (!person.canAfford(move.getPlayer())) {</span>
+<span class="nc" id="L119">				throw new IllegalArgumentException(&quot;can not afford person&quot;);</span>
+			}
+<span class="nc" id="L121">			int mademoiselle = 0;</span>
+<span class="nc" id="L122">			Player player1 = move.getPlayer();</span>
+<span class="nc" id="L123">			ArrayList&lt;Card&gt; crew = player1.getNonGoldCards();</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">			for(Card card : crew){</span>
+<span class="nc bnc" id="L125" title="All 2 branches missed.">				if(((Person)card).getAbility().equals(Ability.MADEMOISELLE)){</span>
+<span class="nc" id="L126">					mademoiselle += 1;</span>
+				}
+
+<span class="nc" id="L129">			}</span>
+
+<span class="nc" id="L131">			moveControllerHelp.adjustCoins(move.getPlayer(), move.getCard().getCoins() + mademoiselle, turn);</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if (!move.getPlayer().equals(turn.getActivePlayer())) {</span>
+<span class="nc" id="L133">				cardToPayActive = move.getPlayer().getGoldCards().remove(0);</span>
+<span class="nc" id="L134">				turn.getActivePlayer().addCard(cardToPayActive);</span>
+			}
+<span class="nc" id="L136">			turn.getHarbourDisplay().remove(move.getCard());</span>
+
+			/* adjusting attributes */
+<span class="nc" id="L139">			Player player = move.getPlayer();</span>
+<span class="nc" id="L140">			Person card = (Person) move.getCard();</span>
+<span class="nc" id="L141">			player.addCard(person);</span>
+<span class="nc" id="L142">			int oldSwords = player.getSwords();</span>
+<span class="nc" id="L143">			player.setSwords(oldSwords + card.getSwords());</span>
+<span class="nc" id="L144">			int oldVictoryPoints = player.getVictoryPoints();</span>
+<span class="nc" id="L145">			player.setVictoryPoints(oldVictoryPoints + card.getVictoryPoints());</span>
+<span class="nc bnc" id="L146" title="All 2 branches missed.">			if (card.getAbility().equals(Ability.TRADER)) {</span>
+<span class="nc bnc" id="L147" title="All 6 branches missed.">				switch (card.getColor()) {</span>
+					case BLUE:
+<span class="nc" id="L149">						player.getTraderBonus()[0]++;</span>
+<span class="nc" id="L150">						break;</span>
+
+					case RED:
+<span class="nc" id="L153">						player.getTraderBonus()[1]++;</span>
+<span class="nc" id="L154">						break;</span>
+
+					case GREEN:
+<span class="nc" id="L157">						player.getTraderBonus()[2]++;</span>
+<span class="nc" id="L158">						break;</span>
+
+					case BLACK:
+<span class="nc" id="L161">						player.getTraderBonus()[3]++;</span>
+<span class="nc" id="L162">						break;</span>
+
+					case YELLOW:
+<span class="nc" id="L165">						player.getTraderBonus()[4]++;</span>
+<span class="nc" id="L166">						break;</span>
+
+					default: /* No trader so cant happen */
+				}
+			}
+
+		}
+<span class="nc" id="L173">		moveControllerHelp.adjustMoveCount(turn);</span>
+<span class="nc" id="L174">	}</span>
+
+	/**
+	 * fulfill a expedition and discard the artifacts cards
+	 * @param move move with the expedition
+	 * @param match current match of the move
+	 */
+	public void fulfillExpedition(Move move, Match match) {
+<span class="nc bnc" id="L182" title="All 2 branches missed.">		if(move.getCard() instanceof Expedition){</span>
+
+<span class="nc" id="L184">			Expedition expedition = (Expedition) move.getCard();</span>
+			Expedition removedExp;
+<span class="nc bnc" id="L186" title="All 2 branches missed.">			if(!expedition.canFulfill(move.getPlayer())){</span>
+<span class="nc" id="L187">				throw new IllegalArgumentException(&quot;can not fulfill&quot;);</span>
+			}
+
+<span class="nc bnc" id="L190" title="All 2 branches missed.">			if(match.getExpeditionDisplay().contains(expedition)) {</span>
+<span class="nc" id="L191">				int index = match.getExpeditionDisplay().indexOf(expedition);</span>
+<span class="nc" id="L192">				removedExp = match.getExpeditionDisplay().remove(index);</span>
+<span class="nc" id="L193">			} else {</span>
+<span class="nc" id="L194">				throw new IllegalArgumentException(&quot;Exp not in display&quot;);</span>
+			}
+
+<span class="nc" id="L197">			Player player = move.getPlayer();</span>
+<span class="nc" id="L198">			ArrayList&lt;Ability&gt; artifacts = expedition.getArtifacts();</span>
+<span class="nc" id="L199">			ArrayList&lt;Card&gt; playerCards = player.getNonGoldCards();</span>
+
+<span class="nc" id="L201">			int countSettler = moveControllerHelp.countGivenArtifacts(playerCards, Ability.SETTLER);</span>
+<span class="nc" id="L202">			int countCaptain = moveControllerHelp.countGivenArtifacts(playerCards, Ability.CAPTAIN);</span>
+<span class="nc" id="L203">			int countPriest = moveControllerHelp.countGivenArtifacts(playerCards, Ability.PRIEST);</span>
+
+<span class="nc" id="L205">			int needSettler = moveControllerHelp.countNeededArtifacts( artifacts,  Ability.SETTLER);</span>
+<span class="nc" id="L206">			int needCaptain = moveControllerHelp.countNeededArtifacts( artifacts,  Ability.CAPTAIN);</span>
+<span class="nc" id="L207">			int needPriest = moveControllerHelp.countNeededArtifacts( artifacts,  Ability.PRIEST);</span>
+
+<span class="nc" id="L209">			int neededJoker = 0;</span>
+
+<span class="nc" id="L211">			int removeSettler = needSettler;</span>
+<span class="nc" id="L212">			int removeCaptain = needCaptain;</span>
+<span class="nc" id="L213">			int removePriest = needPriest;</span>
+
+<span class="nc bnc" id="L215" title="All 2 branches missed.">			if (needSettler - countSettler &gt;0) {</span>
+<span class="nc" id="L216">				neededJoker = needSettler - countSettler;</span>
+<span class="nc" id="L217">				removeSettler = countSettler;</span>
+			}
+<span class="nc bnc" id="L219" title="All 2 branches missed.">			if (needCaptain - countCaptain &gt;0) {</span>
+<span class="nc" id="L220">				neededJoker += needCaptain - countCaptain;</span>
+<span class="nc" id="L221">				removeCaptain = countCaptain;</span>
+			}
+<span class="nc bnc" id="L223" title="All 2 branches missed.">			if (needPriest - countPriest &gt;0) {</span>
+<span class="nc" id="L224">				neededJoker += needPriest - countPriest;</span>
+<span class="nc" id="L225">				removePriest =countPriest;</span>
+			}
+
+<span class="nc" id="L228">			ArrayList&lt;Integer&gt; removeCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L229">			removeCards.add(removeSettler);</span>
+<span class="nc" id="L230">			removeCards.add(removePriest);</span>
+<span class="nc" id="L231">			removeCards.add(removeCaptain);</span>
+<span class="nc" id="L232">			removeCards.add(neededJoker);</span>
+
+<span class="nc" id="L234">			moveControllerHelp.removeCards(removeCards, match, player);</span>
+
+			/* adjusting coins and victoryPoints */
+<span class="nc" id="L237">			move.getPlayer().addCard(removedExp);</span>
+<span class="nc" id="L238">			ArrayList&lt;Turn&gt; turns = match.getTurnHistory();</span>
+<span class="nc" id="L239">			moveControllerHelp.adjustCoins(move.getPlayer(), removedExp.getCoins(), turns.get(turns.size()-1));</span>
+<span class="nc" id="L240">			int oldVP = move.getPlayer().getVictoryPoints();</span>
+<span class="nc" id="L241">			move.getPlayer().setVictoryPoints(oldVP + ((Expedition) move.getCard()).getVictoryPoints());</span>
+<span class="nc" id="L242">			move.getPlayer().setDidExp(true);</span>
+<span class="nc" id="L243">		}</span>
+		else
+		{
+<span class="nc" id="L246">			throw new IllegalArgumentException(&quot;not a Expedition card&quot;);</span>
+		}
+<span class="nc" id="L248">	}</span>
+
+	/**
+	 * Get-Method for the mainController
+	 * @return mainController
+	 */
+<span class="nc" id="L254">	public MainController getMainController() { return mainController; }</span>
+
+	/**
+	 * Set-Method for the mainController
+	 * @param mainController mainController
+	 */
+<span class="nc" id="L260">	public void setMainController(MainController mainController) { this.mainController = mainController; }</span>
+
+	/**
+	 * Get-Method for the GameAUI
+	 * @return gameAUI
+	 */
+<span class="nc" id="L266">	public GameAUI getGameAUI() {return gameAUI;}</span>
+
+	/**
+	 * Set-Method for the GameAUI
+	 * @param gameAUI gameAUI
+	 */
+<span class="nc" id="L272">	public void setGameAUI(GameAUI gameAUI) {this.gameAUI = gameAUI;}</span>
+
+	/**
+	 * Get-Method for the MoveControllerHelp
+	 * @return
+	 */
+	public MoveControllerHelp getMoveControllerHelp() {
+<span class="nc" id="L279">		return moveControllerHelp;</span>
+	}
+
+	/**
+	 * Set-Method for the MoveControllerHelp
+	 * @param moveControllerHelp moveControllerHelp
+	 */
+	public void setMoveControllerHelp(MoveControllerHelp moveControllerHelp) {
+<span class="nc" id="L287">		this.moveControllerHelp = moveControllerHelp;</span>
+<span class="nc" id="L288">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

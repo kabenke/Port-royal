@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MatchController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">MatchController.java</span></div><h1>MatchController.java</h1><pre class="source lang-java linenums">package controller;
+
+import abstractuserinterface.GameAUI;
+import model.*;
+
+import java.util.Collections;
+
+import java.util.ArrayList;
+
+
+/**
+ * This class is used to manage a match with its players and the DrawPile.
+ */
+public class MatchController {
+
+	/**
+	 * The Main Controller
+	 */
+	private MainController mainController;
+
+	/**
+	 * The GameAUI
+	 */
+	private GameAUI gameAUI;
+
+	/**
+	 * Constructor for the MatchController
+	 * @param mainController Main Controller
+	 */
+<span class="fc" id="L30">	public MatchController(MainController mainController) {</span>
+<span class="fc" id="L31">		this.mainController = mainController;</span>
+<span class="fc" id="L32">	}</span>
+
+	/**
+	 * This method checks if the drawpile is empty and shuffles
+	 * @param match the match where the Pile should get checked
+	 */
+	public void checkDrawPile(Match match){
+<span class="nc bnc" id="L39" title="All 2 branches missed.">		if(match.getDrawPile().isEmpty()){</span>
+<span class="nc bnc" id="L40" title="All 2 branches missed.">			if(match.getRandomShuffle()){</span>
+<span class="nc" id="L41">				match.getMatchHelp().swapPiles();</span>
+<span class="nc" id="L42">				shuffleDrawPile(match);</span>
+			}
+			else{
+<span class="nc" id="L45">				sortDrawPile();</span>
+<span class="nc" id="L46">				match.getMatchHelp().swapPiles();</span>
+			}
+		}
+<span class="nc" id="L49">	}</span>
+
+	/**
+	 * This method is used to shuffle the PlayerList of a match
+	 * @param match the match where the PlayerList should get shuffled
+	 */
+	public void shufflePlayerlist(Match match) {
+<span class="nc" id="L56">		ArrayList&lt;Player&gt; toShuffleList = match.getPlayerList();</span>
+<span class="nc" id="L57">		Collections.shuffle(toShuffleList);</span>
+<span class="nc" id="L58">		match.setPlayerList(toShuffleList);</span>
+
+
+<span class="nc" id="L61">	}</span>
+
+	/**
+	 * This method is used to initialize the DrawPile for a match
+	 * @param match the match where the DrawPile should be initialized
+	 */
+	public void initializeDrawPile(Match match) {
+		ArrayList&lt;Card&gt; drawPile;
+<span class="fc" id="L69">		drawPile = mainController.getParseController().parseCsvToPile();</span>
+<span class="nc" id="L70">		mainController.getPortRoyal().getActiveMatch().setDrawPile(drawPile);</span>
+
+<span class="nc bnc" id="L72" title="All 2 branches missed.">		for(Card card : drawPile){</span>
+<span class="nc bnc" id="L73" title="All 4 branches missed.">			if(card instanceof Expedition &amp;&amp; ((Expedition) card).getArtifacts().size()==3</span>
+<span class="nc bnc" id="L74" title="All 2 branches missed.">					 					  &amp;&amp; ((Expedition) card).getArtifacts().get(0) == Ability.CAPTAIN</span>
+<span class="nc bnc" id="L75" title="All 2 branches missed.">										  &amp;&amp; ((Expedition) card).getArtifacts().get(1) == Ability.PRIEST</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">									      &amp;&amp; ((Expedition) card).getArtifacts().get(2) == Ability.SETTLER )</span>
+			{
+<span class="nc" id="L78">				final int MAX_PLAYERS = 5;</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">				if(match.getPlayerList().size()==MAX_PLAYERS){ match.getExpeditionDisplay().add((Expedition)card); }</span>
+<span class="nc" id="L80">				drawPile.remove(card);</span>
+<span class="nc" id="L81">				break;</span>
+			}
+<span class="nc" id="L83">		}</span>
+
+<span class="nc bnc" id="L85" title="All 2 branches missed.">		for(int i=0; i&lt;match.getPlayerList().size(); i++){</span>
+<span class="nc bnc" id="L86" title="All 2 branches missed.">			for(int k=0; k&lt;3; k++){</span>
+<span class="nc" id="L87">				match.getPlayerList().get(i).addCard(match.drawGoldCard());</span>
+			}
+		}
+
+<span class="nc bnc" id="L91" title="All 2 branches missed.">		if(match.getRandomShuffle()){</span>
+<span class="nc" id="L92">			shuffleDrawPile(match);</span>
+		}
+<span class="nc" id="L94">	}</span>
+
+	/**
+	 * This method is used to sort the DrawPile back to the initial Pile we generated from the CsvFile
+	 */
+	public void sortDrawPile() {
+		ArrayList&lt;Card&gt; initialPile;
+<span class="nc" id="L101">		initialPile = mainController.getParseController().parseCsvToPile();</span>
+
+		ArrayList&lt;Card&gt; discardPile;
+<span class="nc" id="L104">		discardPile = mainController.getPortRoyal().getActiveMatch().getDiscardPile();</span>
+
+<span class="nc" id="L106">		ArrayList&lt;Card&gt; newDrawPile = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		for(int i = initialPile.size()-1; i &gt;= 0; i--){</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">			for(Card card1 : discardPile){</span>
+<span class="nc" id="L110">				Card card = initialPile.get(i);</span>
+<span class="nc bnc" id="L111" title="All 2 branches missed.">				if(compare(card1, card)) {</span>
+<span class="nc" id="L112">					card1.flip();</span>
+<span class="nc" id="L113">					newDrawPile.add(card1);</span>
+				}
+<span class="nc" id="L115">			}</span>
+		}
+<span class="nc" id="L117">	}</span>
+
+	/**
+	 * returns true if the content of the cards is identical, false otherwise
+	 * @param card1 this is the first card
+	 * @param card2 this is the second card
+	 * @return true if the content of the cards is identical, false otherwise
+	 */
+	public boolean compare(Card card1, Card card2) {
+<span class="nc bnc" id="L126" title="All 4 branches missed.">		if(card1.getClass() != card2.getClass() || card1.getCoins() != card2.getCoins()) {</span>
+<span class="nc" id="L127">			return false;</span>
+		}
+
+<span class="nc bnc" id="L130" title="All 2 branches missed.">		if(card1 instanceof Ship) {</span>
+<span class="nc bnc" id="L131" title="All 4 branches missed.">			return (card2 instanceof Ship &amp;&amp; ((Ship) card1).getColor().equals(((Ship) card2).getColor())</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">												&amp;&amp; ((Ship) card1).getSwords() == ((Ship) card2).getSwords());</span>
+		}
+<span class="nc bnc" id="L134" title="All 2 branches missed.">		else if(card1 instanceof Person) {</span>
+<span class="nc bnc" id="L135" title="All 4 branches missed.">			return (card2 instanceof Person &amp;&amp; ((Person) card1).getAbility().equals(((Person) card2).getAbility())</span>
+<span class="nc bnc" id="L136" title="All 2 branches missed.">											&amp;&amp; ((Person) card1).getColor().equals(((Person) card2).getColor())</span>
+<span class="nc bnc" id="L137" title="All 2 branches missed.">											&amp;&amp; ((Person) card1).getSwords() == ((Person) card2).getSwords()</span>
+<span class="nc bnc" id="L138" title="All 2 branches missed.">											&amp;&amp; ((Person) card1).getVictoryPoints() == ((Person) card2).getVictoryPoints());</span>
+		}
+<span class="nc bnc" id="L140" title="All 2 branches missed.">		else if(card1 instanceof TaxRaise) {</span>
+<span class="nc bnc" id="L141" title="All 4 branches missed.">			return (card2 instanceof TaxRaise &amp;&amp; ((TaxRaise) card1).getMaxSwords() == ((TaxRaise) card2).getMaxSwords());</span>
+		}
+		else {
+<span class="nc bnc" id="L144" title="All 4 branches missed.">			if(card2 instanceof Expedition &amp;&amp;((Expedition)card1).getArtifacts().size() == ((Expedition)card2).getArtifacts().size()) {</span>
+<span class="nc" id="L145">				Expedition exp1 = (Expedition) card1;</span>
+<span class="nc" id="L146">				Expedition exp2 = (Expedition) card2;</span>
+<span class="nc bnc" id="L147" title="All 2 branches missed.">				for(int i = 0; i &lt; exp1.getArtifacts().size(); i++) {</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">					if(!(exp1.getArtifacts().get(i).equals(exp2.getArtifacts().get(i)))) {</span>
+<span class="nc" id="L149">						return false;</span>
+					}
+				}
+<span class="nc" id="L152">			} else {</span>
+<span class="nc" id="L153">				return false;</span>
+			}
+
+<span class="nc bnc" id="L156" title="All 2 branches missed.">			return (((Expedition) card1).getVictoryPoints() == ((Expedition) card2).getVictoryPoints());</span>
+		}
+	}
+
+	/**
+	 * This method is used to shuffle the DrawPile of the match
+	 * @param match the match where the DrawPile should get shuffled
+	 */
+	public void shuffleDrawPile(Match match) {
+<span class="nc" id="L165">		ArrayList&lt;Card&gt; input = match.getDrawPile();</span>
+<span class="nc" id="L166">		ArrayList&lt;Card&gt; output = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">		while(input.size()&gt;0){</span>
+<span class="nc" id="L168">			int rand = (int) (Math.random() * input.size());</span>
+<span class="nc" id="L169">			output.add(input.get(rand));</span>
+<span class="nc" id="L170">			input.remove(rand);</span>
+<span class="nc" id="L171">		}</span>
+<span class="nc bnc" id="L172" title="All 2 branches missed.">		for(int i=0; i&lt;output.size(); i++){</span>
+<span class="nc bnc" id="L173" title="All 2 branches missed.">			if(output.get(i).getIsFaceUp())</span>
+<span class="nc" id="L174">			output.get(i).flip();</span>
+		}
+<span class="nc" id="L176">		match.setDrawPile(output);</span>
+<span class="nc" id="L177">	}</span>
+
+	/**
+	 * This method is used to add a turn to a match
+	 * @param match the match where we want to add a new turn
+	 */
+	public void addTurn(Match match) {
+		Turn turn;
+<span class="nc bnc" id="L185" title="All 2 branches missed.">		if(!match.getTurnHistory().isEmpty()) {</span>
+<span class="nc" id="L186">			turn = new Turn(match.getPlayerList(),match.getMatchHelp().nextActivePlayer(),match);</span>
+		} else {
+<span class="nc" id="L188">			turn = new Turn(match.getPlayerList(), match.getPlayerList().get(0), match);</span>
+		}
+
+<span class="nc" id="L191">		Player activePlayer =  turn.getActivePlayer();</span>
+
+<span class="nc bnc" id="L193" title="All 2 branches missed.">		for(int i=0; i&lt;turn.getPlayerList().size();i++) {</span>
+<span class="nc" id="L194">			Player playerAtIndex = turn.getPlayerList().get(i);</span>
+<span class="nc bnc" id="L195" title="All 2 branches missed.">			if(playerAtIndex.equals(activePlayer)){</span>
+<span class="nc" id="L196">				playerAtIndex.setIsActive(true);}</span>
+			else{
+<span class="nc" id="L198">				playerAtIndex.setIsActive(false);</span>
+			}
+		}
+
+<span class="nc" id="L202">		match.getTurnHistory().add(turn);</span>
+
+<span class="nc" id="L204">	}</span>
+
+	/**
+	 * Get-Method for the GameAUI
+	 * @return gameAUI
+	 */
+<span class="nc" id="L210">	public GameAUI getGameAUI() {return gameAUI;}</span>
+
+	/**
+	 * Set-Method for the GameAUI
+	 * @param gameAUI GameAUI
+	 */
+<span class="nc" id="L216">	public void setGameAUI(GameAUI gameAUI) {this.gameAUI = gameAUI;}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

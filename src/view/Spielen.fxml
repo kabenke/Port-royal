@@ -1,0 +1,921 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+	  <Text fx:id="end1Text" layoutX="490.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. LangerNamee" wrappingWidth="227.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="end2Text" layoutX="490.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Johannes" wrappingWidth="227.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="end3Text" layoutX="490.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Johannes" wrappingWidth="227.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="end4Text" layoutX="490.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Johannes" wrappingWidth="227.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="end5Text" layoutX="490.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. Johannes" wrappingWidth="227.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="vp1" layoutX="671.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12VP" textAlignment="RIGHT" wrappingWidth="65.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="coin1" layoutX="747.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10C" textAlignment="RIGHT">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="vp2" layoutX="671.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12VP" textAlignment="RIGHT" wrappingWidth="65.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="vp3" layoutX="671.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12VP" textAlignment="RIGHT" wrappingWidth="65.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="vp4" layoutX="671.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12VP" textAlignment="RIGHT" wrappingWidth="65.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="vp5" layoutX="671.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12VP" textAlignment="RIGHT" wrappingWidth="65.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="coin2" layoutX="747.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10C" textAlignment="RIGHT">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="coin3" layoutX="747.0" layoutY="330.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10C" textAlignment="RIGHT">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="coin4" layoutX="747.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10C" textAlignment="RIGHT">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="coin5" layoutX="747.0" layoutY="410.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10C" textAlignment="RIGHT">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="toStartButton" fitHeight="48.0" fitWidth="227.0" layoutX="533.0" layoutY="521.0" onMouseClicked="#onToStart" onMouseEntered="#toStartEnter" onMouseExited="#toStartExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/toStartButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="toHighscoreButton" fitHeight="48.0" fitWidth="227.0" layoutX="533.0" layoutY="575.0" onMouseClicked="#onToHighscore" onMouseEntered="#toHighscoreEnter" onMouseExited="#toHighscoreExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/highscoresButton.png" />
+         </image>
+      </ImageView>
+	  <ImageView fx:id="pauseBackground" fitHeight="871.0" fitWidth="1501.0" layoutX="-83.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true" />
+      <Text fx:id="pauseText" layoutY="150.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pause" textAlignment="CENTER" wrappingWidth="1280.0">
+         <font>
+            <Font name="Sitka Small" size="24.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="backToGameButton" fitHeight="48.0" fitWidth="227.0" layoutX="527.0" layoutY="220.0" onMouseClicked="#onBackToGame" onMouseEntered="#backToGameEnter" onMouseExited="#backToGameExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/backToGameButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="saveButton" fitHeight="48.0" fitWidth="227.0" layoutX="527.0" layoutY="280.0" onMouseClicked="#onSave" onMouseEntered="#saveEnter" onMouseExited="#saveExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/saveButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="closeGameButton" fitHeight="48.0" fitWidth="227.0" layoutX="527.0" layoutY="340.0" onMouseClicked="#onCloseGame" onMouseEntered="#closeGameEnter" onMouseExited="#closeGameExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/closeGameButton.png" />
+         </image>
+      </ImageView>
+	  <ImageView fitHeight="172.0" fitWidth="688.0" layoutX="186.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background3.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand1" fitHeight="140.0" fitWidth="101.0" layoutX="306.0" layoutY="624.0" onMouseClicked="#onHand1Click" onMouseEntered="#hand1Enter" onMouseExited="#hand1Exit">
+         <image>
+            <Image url="@cards/backsite.jpg" />
+         </image>
+      </ImageView>
+	  <ImageView fx:id="unterlageImg" fitHeight="345.0" fitWidth="688.0" layoutX="189.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="1015.0" layoutY="17.0" onMouseEntered="#player2ImgEnter" onMouseExited="#player2ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backgroundImg3" fitHeight="150.0" fitWidth="250.0" layoutX="1015.0" layoutY="167.0" onMouseEntered="#player3ImgEnter" onMouseExited="#player3ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backgroundImg4" fitHeight="150.0" fitWidth="250.0" layoutX="1015.0" layoutY="317.0" onMouseEntered="#player4ImgEnter" onMouseExited="#player4ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backgroundImg5" fitHeight="150.0" fitWidth="250.0" layoutX="1015.0" layoutY="467.0" onMouseEntered="#player5ImgEnter" onMouseExited="#player5ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="250.0" layoutX="26.0" layoutY="625.0" onMouseEntered="#player1ImgEnter" onMouseExited="#player1ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player1Img" fitHeight="111.0" fitWidth="111.0" layoutX="31.0" layoutY="630.0" onMouseEntered="#player1ImgEnter" onMouseExited="#player1ImgExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar02.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="nameText1" layoutX="31.0" layoutY="756.0" onMouseEntered="#player1ImgEnter" onMouseExited="#player1ImgExit" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler" textAlignment="CENTER" wrappingWidth="111.0">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font></Text>
+      <ImageView fx:id="player5Img" fitHeight="111.0" fitWidth="111.0" layoutX="1020.0" layoutY="472.0" onMouseEntered="#player5ImgEnter" onMouseExited="#player5ImgExit">
+         <image>
+            <Image url="@avatars/avatar01.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player3Img" fitHeight="111.0" fitWidth="111.0" layoutX="1020.0" layoutY="172.0" onMouseEntered="#player3ImgEnter" onMouseExited="#player3ImgExit">
+         <image>
+            <Image url="@avatars/avatar01.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player2Img" fitHeight="111.0" fitWidth="111.0" layoutX="1020.0" layoutY="22.0" onMouseEntered="#player2ImgEnter" onMouseExited="#player2ImgExit">
+         <image>
+            <Image url="@avatars/avatar02.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand2" fitHeight="140.0" fitWidth="100.0" layoutX="416.0" layoutY="624.0" onMouseClicked="#onHand2Click" onMouseEntered="#hand2Enter" onMouseExited="#hand2Exit">
+         <image>
+            <Image url="@cards/person/captain/cap.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand3" fitHeight="140.0" fitWidth="100.0" layoutX="526.0" layoutY="624.0" onMouseClicked="#onHand3Click" onMouseEntered="#hand3Enter" onMouseExited="#hand3Exit">
+         <image>
+            <Image url="@cards/person/settler/settler.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand4" fitHeight="140.0" fitWidth="100.0" layoutX="636.0" layoutY="624.0" onMouseClicked="#onHand4Click" onMouseEntered="#hand4Enter" onMouseExited="#hand4Exit">
+         <image>
+            <Image url="@cards/person/governor/gov.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand5" fitHeight="140.0" fitWidth="100.0" layoutX="746.0" layoutY="624.0" onMouseClicked="#onHand5Click" onMouseEntered="#hand5Enter" onMouseExited="#hand5Exit">
+         <image>
+            <Image url="@cards/person/mademoiselle/9_3.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hand6" fitHeight="140.0" fitWidth="100.0" layoutX="856.0" layoutY="624.0" onMouseClicked="#onHand6Click" onMouseEntered="#hand6Enter" onMouseExited="#hand6Exit">
+         <image>
+            <Image url="@cards/person/trader/green_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="player4Img" fitHeight="111.0" fitWidth="111.0" layoutX="1020.0" layoutY="322.0" onMouseEntered="#player4ImgEnter" onMouseExited="#player4ImgExit">
+         <image>
+            <Image url="@avatars/avatar03.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="discardPile" fitHeight="140.0" fitWidth="101.0" layoutX="35.0" layoutY="410.0">
+         <image>
+            <Image url="@cards/ship/black_2_4.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="nameText5" layoutX="1020.0" layoutY="596.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gegner" textAlignment="CENTER" wrappingWidth="111.0">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font></Text>
+      <Text fx:id="nameText4" layoutX="1020.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gegner" textAlignment="CENTER" wrappingWidth="111.0">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font></Text>
+      <Text fx:id="nameText3" layoutX="1020.0" layoutY="296.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gegner" textAlignment="CENTER" wrappingWidth="111.0">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font></Text>
+      <Text fx:id="nameText2" layoutX="1020.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Gegner" textAlignment="CENTER" wrappingWidth="111.0">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font></Text>
+      <ImageView fx:id="harbor1" fitHeight="140.0" fitWidth="100.0" layoutX="206.0" layoutY="259.0" onMouseClicked="#onHarbor1Click" onMouseEntered="#onHarbor1Enter" onMouseExited="#onHarbor1Exit">
+         <image>
+            <Image url="@cards/ship/blue_2_2.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor2" fitHeight="140.0" fitWidth="100.0" layoutX="316.0" layoutY="259.0" onMouseClicked="#onHarbor2Click" onMouseEntered="#onHarbor2Enter" onMouseExited="#onHarbor2Exit">
+         <image>
+            <Image url="@cards/person/admiral/9_3.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor3" fitHeight="140.0" fitWidth="100.0" layoutX="426.0" layoutY="259.0" onMouseClicked="#onHarbor3Click" onMouseEntered="#onHarbor3Enter" onMouseExited="#onHarbor3Exit">
+         <image>
+            <Image url="@cards/ship/red_4_30.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor4" fitHeight="140.0" fitWidth="100.0" layoutX="536.0" layoutY="259.0" onMouseClicked="#onHarbor4Click" onMouseEntered="#onHarbor4Enter" onMouseExited="#onHarbor4Exit">
+         <image>
+            <Image url="@cards/tax/min.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="drawpileImg" fitHeight="140.0" fitWidth="101.0" layoutX="35.0" layoutY="259.0" onMouseClicked="#onDrawPileClick" onMouseEntered="#drawpileImgEnter" onMouseExited="#drawpileImgExit">
+         <image>
+            <Image url="@cards/backsite.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor5" fitHeight="140.0" fitWidth="100.0" layoutX="646.0" layoutY="259.0" onMouseClicked="#onHarbor5Click" onMouseEntered="#onHarbor5Enter" onMouseExited="#onHarbor5Exit">
+         <image>
+            <Image url="@cards/person/joker/joker.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor6" fitHeight="140.0" fitWidth="100.0" layoutX="756.0" layoutY="259.0" onMouseClicked="#onHarbor6Click" onMouseEntered="#onHarbor6Enter" onMouseExited="#onHarbor6Exit">
+         <image>
+            <Image url="@cards/ship/yellow_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="leftButton" fitHeight="26.0" fitWidth="15.0" layoutX="290.0" layoutY="684.0" nodeOrientation="RIGHT_TO_LEFT" onMouseClicked="#onLeftClick" rotate="180.0">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp1" fitHeight="140.0" fitWidth="101.0" layoutX="206.0" layoutY="32.0" onMouseClicked="#onExp1Click" onMouseEntered="#exp1Enter" onMouseExited="#exp1Exit">
+         <image>
+            <Image url="@cards/expedition/capcap.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp3" fitHeight="140.0" fitWidth="101.0" layoutX="426.0" layoutY="32.0" onMouseClicked="#onExp3Click" onMouseEntered="#exp3Enter" onMouseExited="#exp3Exit">
+         <image>
+            <Image url="@cards/expedition/cappriset.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp2" fitHeight="140.0" fitWidth="101.0" layoutX="316.0" layoutY="32.0" onMouseClicked="#onExp2Click" onMouseEntered="#exp2Enter" onMouseExited="#exp2Exit">
+         <image>
+            <Image url="@cards/expedition/capcapset.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp4" fitHeight="140.0" fitWidth="101.0" layoutX="536.0" layoutY="32.0" onMouseClicked="#onExp4Click" onMouseEntered="#exp4Enter" onMouseExited="#exp4Exit">
+         <image>
+            <Image url="@cards/expedition/pripri.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp5" fitHeight="140.0" fitWidth="101.0" layoutX="646.0" layoutY="32.0" onMouseClicked="#onExp5Click" onMouseEntered="#exp5Enter" onMouseExited="#exp5Exit">
+         <image>
+            <Image url="@cards/expedition/pripriset.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="exp6" fitHeight="140.0" fitWidth="101.0" layoutX="756.0" layoutY="32.0" onMouseClicked="#onExp6Click" onMouseEntered="#exp6Enter" onMouseExited="#exp6Exit">
+         <image>
+            <Image url="@cards/expedition/setset.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="playerHelpText" layoutX="277.0" layoutY="785.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erwartete Aktion des Spielers" textAlignment="CENTER" wrappingWidth="720.7265625" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1160.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1190.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="traderGreenText2" fill="#00a110" layoutX="1192.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlueText2" fill="#1400ff" layoutX="1148.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderRedText2" fill="RED" layoutX="1170.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlackText2" layoutX="1214.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderYellowText2" fill="#ffee02" layoutX="1237.0" layoutY="145.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="coinText2" layoutX="1160.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="victoryText2" layoutX="1190.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="25.0" />
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1220.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="swordText2" layoutX="1220.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6" textAlignment="CENTER" wrappingWidth="25.0" />
+      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="1205.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="1145.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="jokerText2" layoutX="1145.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="captainText2" layoutX="1174.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="priestText2" layoutX="1204.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="settlerText2" layoutX="1234.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="admiralText2" layoutX="1234.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="20.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1205.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="jesterText2" layoutX="1205.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="playerCoinCount" fill="#b5b5b5" layoutX="311.0" layoutY="745.0" strokeType="OUTSIDE" strokeWidth="0.0" text="13" textAlignment="CENTER" wrappingWidth="91.47005462646484">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <Text fx:id="drawPileCount" fill="#b5b5b5" layoutX="36.0" layoutY="378.0" onMouseEntered="#drawpileImgEnter" onMouseExited="#drawpileImgExit" strokeType="OUTSIDE" strokeWidth="0.0" text="104" textAlignment="CENTER" wrappingWidth="101.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="victoryImg3" fitHeight="25.0" fitWidth="25.0" layoutX="1190.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="victoryImg4" fitHeight="25.0" fitWidth="25.0" layoutX="1190.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="victoryImg5" fitHeight="25.0" fitWidth="25.0" layoutX="1190.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="coinImg3" fitHeight="25.0" fitWidth="25.0" layoutX="1160.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="coinImg4" fitHeight="25.0" fitWidth="25.0" layoutX="1160.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="coinImg5" fitHeight="25.0" fitWidth="25.0" layoutX="1160.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="swordImg3" fitHeight="25.0" fitWidth="25.0" layoutX="1220.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="swordImg4" fitHeight="25.0" fitWidth="25.0" layoutX="1220.0" layoutY="321.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="swordImg5" fitHeight="25.0" fitWidth="25.0" layoutX="1220.0" layoutY="471.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="coinText3" layoutX="1160.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="coinText5" layoutX="1160.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="coinText4" layoutX="1160.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="victoryText3" layoutX="1190.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="swordText3" layoutX="1220.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="victoryText4" layoutX="1190.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="swordText4" layoutX="1220.0" layoutY="354.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="victoryText5" layoutX="1190.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="swordText5" layoutX="1220.0" layoutY="504.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <ImageView fx:id="settlerImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="settlerImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="settlerImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="priestImg3" fitHeight="25.0" fitWidth="20.0" layoutX="1205.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="priestImg4" fitHeight="25.0" fitWidth="20.0" layoutX="1205.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="priestImg5" fitHeight="25.0" fitWidth="20.0" layoutX="1205.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="captainImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="captainImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="captainImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jokerImg3" fitHeight="25.0" fitWidth="20.0" layoutX="1145.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jokerImg4" fitHeight="25.0" fitWidth="20.0" layoutX="1145.0" layoutY="360.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jokerImg5" fitHeight="25.0" fitWidth="20.0" layoutX="1145.0" layoutY="510.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="settlerText3" layoutX="1234.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="settlerText4" layoutX="1234.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="settlerText5" layoutX="1234.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="priestText3" layoutX="1205.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="captainText3" layoutX="1175.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jokerText3" layoutX="1145.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="priestText4" layoutX="1205.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="captainText4" layoutX="1175.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jokerText4" layoutX="1145.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="priestText5" layoutX="1205.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jokerText5" layoutX="1145.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="captainText5" layoutX="1175.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2" textAlignment="CENTER" wrappingWidth="20.0" />
+      <ImageView fx:id="admiralImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="admiralImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="admiralImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1235.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jesterImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1205.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jesterImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1205.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="jesterImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1205.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="admiralText3" layoutX="1235.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="admiralText4" layoutX="1234.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="admiralText5" layoutX="1235.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jesterText3" layoutX="1205.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jesterText4" layoutX="1205.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jesterText5" layoutX="1205.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="traderGreenText3" fill="#00a110" layoutX="1192.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderGreenText5" fill="#00a110" layoutX="1192.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderGreenText4" fill="#00a110" layoutX="1192.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlueText3" fill="#1400ff" layoutX="1148.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlueText4" fill="#1400ff" layoutX="1148.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlueText5" fill="#1400ff" layoutX="1148.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderRedText3" fill="RED" layoutX="1170.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderRedText4" fill="RED" layoutX="1170.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderRedText5" fill="RED" layoutX="1170.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlackText3" layoutX="1214.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlackText4" layoutX="1214.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlackText5" layoutX="1214.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderYellowText3" fill="#ffee02" layoutX="1237.0" layoutY="295.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderYellowText4" fill="#ffee02" layoutX="1237.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderYellowText5" fill="#ffee02" layoutX="1237.0" layoutY="595.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="governorImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="governorImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="governorImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1175.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="governorText2" layoutX="1175.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="governorText3" layoutX="1175.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="governorText4" layoutX="1175.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="governorText5" layoutX="1175.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="1145.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mademoiselleImg3" fitHeight="20.0" fitWidth="20.0" layoutX="1150.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mademoiselleImg4" fitHeight="20.0" fitWidth="20.0" layoutX="1145.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="mademoiselleImg5" fitHeight="20.0" fitWidth="20.0" layoutX="1145.0" layoutY="543.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="mademoiselleText2" layoutX="1145.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="mademoiselleText3" layoutX="1145.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="mademoiselleText4" layoutX="1145.0" layoutY="423.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="mademoiselleText5" layoutX="1145.0" layoutY="573.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <ImageView fx:id="harbor7" fitHeight="140.0" fitWidth="100.0" layoutX="206.0" layoutY="410.0" onMouseClicked="#onHarbor7Click" onMouseEntered="#onHarbor7Enter" onMouseExited="#onHarbor7Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rightButton" fitHeight="26.0" fitWidth="15.0" layoutX="962.0" layoutY="684.0" onMouseClicked="#onRightClick">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harborUpButton" fitHeight="43.0" fitWidth="40.0" layoutX="900.0" layoutY="354.0" onMouseClicked="#onHarborUp" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/top.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harborDownButton" fitHeight="43.0" fitWidth="40.0" layoutX="900.0" layoutY="393.0" onMouseClicked="#onHarborDown" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/bottom.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="rulesButton" fitHeight="55.0" fitWidth="55.0" layoutX="80.0" layoutY="20.0" onMouseClicked="#onRulesClick" onMouseEntered="#onRulesEnter" onMouseExited="#onRulesExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/rulesButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="pauseButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#onPauseClick" onMouseEntered="#onPauseButtonEnter" onMouseExited="#onPauseButtonExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/pauseButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="infoButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="80.0" onMouseClicked="#onInfoClick" onMouseEntered="#onInfoEnter" onMouseExited="#onInfoExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/infoButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hintButton" fitHeight="55.0" fitWidth="55.0" layoutX="80.0" layoutY="80.0" onMouseClicked="#onHintClick" onMouseEntered="#onHintEnter" onMouseExited="#onHintExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/tipButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor8" fitHeight="140.0" fitWidth="100.0" layoutX="316.0" layoutY="410.0" onMouseClicked="#onHarbor8Click" onMouseEntered="#onHarbor8Enter" onMouseExited="#onHarbor8Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor9" fitHeight="140.0" fitWidth="100.0" layoutX="426.0" layoutY="410.0" onMouseClicked="#onHarbor9Click" onMouseEntered="#onHarbor9Enter" onMouseExited="#onHarbor9Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor10" fitHeight="140.0" fitWidth="100.0" layoutX="536.0" layoutY="410.0" onMouseClicked="#onHarbor10Click" onMouseEntered="#onHarbor10Enter" onMouseExited="#onHarbor10Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor11" fitHeight="140.0" fitWidth="100.0" layoutX="646.0" layoutY="410.0" onMouseClicked="#onHarbor11Click" onMouseEntered="#onHarbor11Enter" onMouseExited="#onHarbor11Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="harbor12" fitHeight="140.0" fitWidth="100.0" layoutX="756.0" layoutY="410.0" onMouseClicked="#onHarbor12Click" onMouseEntered="#onHarbor12Enter" onMouseExited="#onHarbor12Exit">
+         <image>
+            <Image url="@cards/ship/red_1_1.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="171.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="201.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="231.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="coinText1" layoutX="171.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="victoryText1" layoutX="201.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <Text fx:id="swordText1" layoutX="231.0" layoutY="662.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12" textAlignment="CENTER" wrappingWidth="25.0" />
+      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="156.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="186.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="20.0" layoutX="216.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="246.0" layoutY="669.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="jokerText1" layoutX="156.0" layoutY="699.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="captainText1" layoutX="187.0" layoutY="699.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="priestText1" layoutX="216.0" layoutY="699.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="settlerText1" layoutX="246.0" layoutY="699.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="156.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="186.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="216.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="246.0" layoutY="702.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="mademoiselleText1" layoutX="156.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="governorText1" layoutX="187.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="jesterText1" layoutX="216.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="admiralText1" layoutX="246.0" layoutY="732.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="CENTER" wrappingWidth="20.0" />
+      <Text fx:id="traderBlueText1" fill="#1400ff" layoutX="159.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderRedText1" fill="RED" layoutX="181.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderGreenText1" fill="#00a110" layoutX="203.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderBlackText1" layoutX="225.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <Text fx:id="traderYellowText1" fill="#ffee02" layoutX="247.0" layoutY="753.0" strokeType="OUTSIDE" strokeWidth="0.0" text="+0" />
+      <ImageView fx:id="repelButton" onMouseEntered="#repelEnter" onMouseExited="#repelExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="643.0" onMouseClicked="#onRepelShipClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/repelButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="hireButton" onMouseEntered="#hireEnter" onMouseExited="#hireExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="643.0" onMouseClicked="#onHirePersonClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/hireButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fullfillButton" onMouseEntered="#fullfillEnter" onMouseExited="#fullfillExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="643.0" onMouseClicked="#onFullfillExpeditionClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/fullfillButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="endDiscoverButton" onMouseEntered="#endDiscovEnter" onMouseExited="#endDiscovExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="700.0" onMouseClicked="#onEndDiscoverClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/endDiscoverButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="sellShipButton" onMouseEntered="#sellEnter" onMouseExited="#sellExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="643.0" onMouseClicked="#onSellShipClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/sellShipButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="endMoveButton" onMouseEntered="#endMoveEnter" onMouseExited="#endMoveExit" fitHeight="48.0" fitWidth="227.0" layoutX="1027.0" layoutY="700.0" onMouseClicked="#onEndMoveClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/endMoveButton.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="discardPileCount" layoutX="35.0" layoutY="586.0" onMouseEntered="#drawpileImgEnter" onMouseExited="#drawpileImgExit" strokeType="OUTSIDE" strokeWidth="0.0" text="104" textAlignment="CENTER" wrappingWidth="101.0">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="undoButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="140.0" onMouseClicked="#onUndoClick" onMouseEntered="#onUndoEnter" onMouseExited="#onUndoExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/undoButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="redoButton" fitHeight="55.0" fitWidth="55.0" layoutX="80.0" layoutY="140.0" onMouseClicked="#onRedoClick" onMouseEntered="#onRedoEnter" onMouseExited="#onRedoExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/redoButton.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="phaseText" layoutX="186.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Handeln &amp; Heuern" textAlignment="CENTER" wrappingWidth="688.0">
+         <font>
+            <Font name="Sitka Small" size="19.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="animationBackground" fitHeight="200.0" fitWidth="1307.0" layoutX="-7.0" layoutY="303.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/animationBackground.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="animationName" layoutX="425.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LangerName" textAlignment="CENTER" wrappingWidth="442.13671875">
+         <font>
+            <Font name="Sitka Small" size="36.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="bubble" fitHeight="146.0" fitWidth="234.0" layoutX="126.0" layoutY="116.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/bubble.jpg" />
+         </image>
+      </ImageView>
+      <Text fx:id="hintText" layoutX="178.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hier könnte ihre Werbung stehen! 0800/2222222" textAlignment="CENTER" wrappingWidth="166.13671875">
+         <font>
+            <Font name="Sitka Small" size="14.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="bigPlayerView" fitHeight="255.0" fitWidth="462.0" layoutX="538.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background2.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigCoin" fitHeight="60.0" fitWidth="60.0" layoutX="96.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/coin.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigJack" fitHeight="60.0" fitWidth="60.0" layoutX="44.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jackofalltrades.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigMade" fitHeight="60.0" fitWidth="60.0" layoutX="44.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/mademoiselle.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="bigVictoryText" layoutX="200.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="bigCaptain" fitHeight="60.0" fitWidth="60.0" layoutX="148.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/captain.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigPriest" fitHeight="60.0" fitWidth="60.0" layoutX="252.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/priest.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigSettler" fitHeight="60.0" fitWidth="60.0" layoutX="356.0" layoutY="90.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/settler.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigGov" fitHeight="60.0" fitWidth="60.0" layoutX="148.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/govonor.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigJester" fitHeight="60.0" fitWidth="60.0" layoutX="252.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/jester.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigAdmiral" fitHeight="60.0" fitWidth="60.0" layoutX="356.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/admiral.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigVictory" fitHeight="60.0" fitWidth="60.0" layoutX="200.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/victoryPoint.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="bigSaber" fitHeight="60.0" fitWidth="60.0" layoutX="304.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/saber.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="bigSaberText" layoutX="304.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigCoinText" layoutX="96.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigJackText" layoutX="44.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigCaptainText" layoutX="146.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigPriestText" layoutX="252.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigSettlerText" layoutX="356.0" layoutY="165.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigAdmiralText" layoutX="356.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigJesterText" layoutX="252.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigGovText" layoutX="146.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="bigMadeText" layoutX="45.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="10" textAlignment="CENTER" wrappingWidth="60.0">
+         <font>
+            <Font name="Sitka Small" size="20.0" />
+         </font>
+      </Text>
+      <ListView fx:id="listOfMoves" layoutX="1015.0" layoutY="168.0" prefHeight="437.0" prefWidth="250.0" styleClass="playerNameField" />
+   </children>
+</fx:root>

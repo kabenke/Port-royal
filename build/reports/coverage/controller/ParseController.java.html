@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ParseController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">ParseController.java</span></div><h1>ParseController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.StringTokenizer;
+
+/**
+ * This Controller is used to parse a csv file to a pile.
+ */
+public class ParseController {
+
+    /**
+     * The Main controller
+     */
+    private MainController mainController;
+
+    /**
+     * path of the csv file
+     */
+    private String filePath;
+
+    /**
+     * Constructor for the main controller
+     * @param mainController the mainController
+     */
+<span class="fc" id="L27">    public ParseController(MainController mainController){</span>
+<span class="fc" id="L28">        this.mainController = mainController;</span>
+<span class="fc" id="L29">        this.filePath = &quot;src/cardorder/shuffled.csv&quot;;</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Ability to convert a csv-file to a pile
+     * @return return the pile from the csv-file
+     */
+    public ArrayList&lt;Card&gt; parseCsvToPile() {
+<span class="fc" id="L37">        ArrayList&lt;Card&gt; pile = new ArrayList&lt;Card&gt;();</span>
+        BufferedReader reader;
+        try{
+<span class="fc" id="L40">            reader = new BufferedReader(new FileReader(filePath));</span>
+<span class="fc" id="L41">            String line = reader.readLine();</span>
+<span class="fc bfc" id="L42" title="All 2 branches covered.">            while(line!=null){</span>
+<span class="fc" id="L43">                StringTokenizer tokenizer = new StringTokenizer(line, &quot;,&quot;);</span>
+<span class="fc" id="L44">                String token  = tokenizer.nextToken();</span>
+<span class="fc" id="L45">                String token2 = tokenizer.nextToken();</span>
+<span class="fc" id="L46">                String token3 = tokenizer.nextToken();</span>
+<span class="fc" id="L47">                csvCheckTokens(token, token2, token3, pile);</span>
+<span class="fc" id="L48">                line = reader.readLine();</span>
+<span class="fc" id="L49">            }</span>
+<span class="fc" id="L50">            reader.close();</span>
+        }
+<span class="nc" id="L52">        catch(Exception e){</span>
+<span class="nc" id="L53">            return null;</span>
+<span class="fc" id="L54">        }</span>
+<span class="fc" id="L55">        int wantedPileSize = 120;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        if(pile.size() == wantedPileSize){ return pile; }</span>
+<span class="nc" id="L57">        else{return null;}</span>
+    }
+
+    /**
+     * Help method for parseCsvToPile
+     * @param token Token 1
+     * @param token2 Token 2
+     * @param token3 Token 3
+     * @param pile Pile
+     */
+    private void csvCheckTokens(String token, String token2, String token3, ArrayList&lt;Card&gt; pile){
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        if(token.equals(&quot;Expedition&quot;)){</span>
+<span class="fc" id="L69">            this.csvParseExpedition(token2, token3, pile);</span>
+        }
+<span class="fc bfc" id="L71" title="All 2 branches covered.">        else if(token.equals(&quot;Tax Increase&quot;)){</span>
+<span class="fc bfc" id="L72" title="All 2 branches covered.">            if(token2.equals(&quot;Max Sword&quot;)){ pile.add(new TaxRaise(true)); }</span>
+<span class="pc bpc" id="L73" title="1 of 2 branches missed.">            else if(token2.equals(&quot;Min VP&quot;)){ pile.add(new TaxRaise(false)); }</span>
+        }
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        else if(token.equals(&quot;Admiral&quot;)){</span>
+<span class="fc" id="L76">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L77">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L78">            pile.add(new Person(coins, 0, Ability.ADMIRAL, points, Color.UNDEFINED));</span>
+<span class="fc" id="L79">        }</span>
+<span class="fc bfc" id="L80" title="All 2 branches covered.">        else if(token.equals(&quot;Captain&quot;)){</span>
+<span class="fc" id="L81">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L82">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L83">            pile.add(new Person(coins, 0, Ability.CAPTAIN, points, Color.UNDEFINED));</span>
+<span class="fc" id="L84">        }</span>
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        else if(token.equals(&quot;Governor&quot;)){</span>
+<span class="fc" id="L86">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L87">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L88">            pile.add(new Person(coins, 0, Ability.GOVERNOR, points, Color.UNDEFINED));</span>
+<span class="fc" id="L89">        }</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        else if(token.equals(&quot;Jack of All Trades&quot;)){</span>
+<span class="fc" id="L91">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L92">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L93">            pile.add(new Person(coins, 0, Ability.JOKER, points, Color.UNDEFINED));</span>
+<span class="fc" id="L94">        }</span>
+<span class="fc bfc" id="L95" title="All 2 branches covered.">        else if(token.equals(&quot;Jester&quot;)){</span>
+<span class="fc" id="L96">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L97">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L98">            pile.add(new Person(coins, 0, Ability.JESTER, points, Color.UNDEFINED));</span>
+<span class="fc" id="L99">        }</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        else if(token.equals(&quot;Mademoiselle&quot;)){</span>
+<span class="fc" id="L101">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L102">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L103">            pile.add(new Person(coins, 0, Ability.MADEMOISELLE, points, Color.UNDEFINED));</span>
+<span class="fc" id="L104">        }</span>
+<span class="fc bfc" id="L105" title="All 2 branches covered.">        else if(token.equals(&quot;Pirate&quot;)){</span>
+<span class="fc" id="L106">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L107">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L108">            pile.add(new Person(coins, 2, Ability.PIRATE, points, Color.UNDEFINED));</span>
+<span class="fc" id="L109">        }</span>
+        else{
+<span class="fc" id="L111">            csvCheckTokensHelp(token, token2, token3, pile);</span>
+        }
+<span class="fc" id="L113">    }</span>
+
+    /**
+     * Help method for parseCsvToPile
+     * @param token Token 1
+     * @param token2 Token 2
+     * @param token3 Token 3
+     * @param pile Pile
+     */
+    private void csvCheckTokensHelp(String token, String token2, String token3, ArrayList&lt;Card&gt; pile) {
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if(token.equals(&quot;Priest&quot;)){</span>
+<span class="fc" id="L124">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L125">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L126">            pile.add(new Person(coins, 0, Ability.PRIEST, points, Color.UNDEFINED));</span>
+<span class="fc" id="L127">        }</span>
+<span class="fc bfc" id="L128" title="All 2 branches covered.">        else if(token.equals(&quot;Sailor&quot;)){</span>
+<span class="fc" id="L129">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L130">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L131">            pile.add(new Person(coins, 1, Ability.SAILOR, points, Color.UNDEFINED));</span>
+<span class="fc" id="L132">        }</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        else if(token.equals(&quot;Settler&quot;)){</span>
+<span class="fc" id="L134">            int points = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L135">            int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L136">            pile.add(new Person(coins, 0, Ability.SETTLER, points, Color.UNDEFINED));</span>
+<span class="fc" id="L137">        }</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">        else if(token.equals(&quot;Trader&quot;)){</span>
+<span class="fc" id="L139">            csvParseTrader(token2, token3, pile);</span>
+        }
+<span class="fc bfc" id="L141" title="All 2 branches covered.">        else if(token.equals(&quot;Flute&quot;)){</span>
+<span class="fc" id="L142">            int swords = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L143">            int coins  = Integer.parseInt(token3);</span>
+<span class="fc" id="L144">            pile.add(new Ship(coins, swords, Color.BLUE));</span>
+<span class="fc" id="L145">        }</span>
+<span class="fc bfc" id="L146" title="All 2 branches covered.">        else if(token.equals(&quot;Frigate&quot;)){</span>
+            int swords;
+<span class="fc" id="L148">            try{ swords = Integer.parseInt(token2.substring(0,1)); }</span>
+<span class="fc" id="L149">            catch(NumberFormatException e){ swords = 30; }</span>
+<span class="fc" id="L150">            int coins  = Integer.parseInt(token3);</span>
+<span class="fc" id="L151">            pile.add(new Ship(coins, swords, Color.RED));</span>
+<span class="fc" id="L152">        }</span>
+<span class="fc bfc" id="L153" title="All 2 branches covered.">        else if(token.equals(&quot;Galleon&quot;)){</span>
+            int swords;
+<span class="fc" id="L155">            try{ swords = Integer.parseInt(token2.substring(0,1)); }</span>
+<span class="fc" id="L156">            catch(NumberFormatException e){ swords = 30; }</span>
+<span class="fc" id="L157">            int coins  = Integer.parseInt(token3);</span>
+<span class="fc" id="L158">            pile.add(new Ship(coins, swords, Color.BLACK));</span>
+<span class="fc" id="L159">        }</span>
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        else if(token.equals(&quot;Pinnace&quot;)){</span>
+<span class="fc" id="L161">            int swords = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L162">            int coins  = Integer.parseInt(token3);</span>
+<span class="fc" id="L163">            pile.add(new Ship(coins, swords, Color.YELLOW));</span>
+<span class="fc" id="L164">        }</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">        else if(token.equals(&quot;Skiff&quot;)){</span>
+<span class="fc" id="L166">            int swords = Integer.parseInt(token2.substring(0,1));</span>
+<span class="fc" id="L167">            int coins  = Integer.parseInt(token3);</span>
+<span class="fc" id="L168">            pile.add(new Ship(coins, swords, Color.GREEN));</span>
+        }
+<span class="fc" id="L170">    }</span>
+
+    /**
+     * Help method for parseCsvToPile
+     * @param token2 Token 2
+     * @param token3 Token 3
+     * @param pile Pile
+     */
+    private void csvParseExpedition(String token2, String token3, ArrayList&lt;Card&gt; pile){
+<span class="fc" id="L179">        int coins = Integer.parseInt(token3);</span>
+<span class="fc" id="L180">        int points = 0;</span>
+<span class="fc" id="L181">        ArrayList&lt;Ability&gt; abs = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        if(token2.equals(&quot;3 Different (5P only)&quot;)){</span>
+<span class="fc" id="L183">            points = 5;</span>
+<span class="fc" id="L184">            abs.add(Ability.CAPTAIN); abs.add(Ability.PRIEST); abs.add(Ability.SETTLER);</span>
+        }
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        else if(token2.equals(&quot;House Pair&quot;)){</span>
+<span class="fc" id="L187">            points = 4;</span>
+<span class="fc" id="L188">            abs.add(Ability.SETTLER); abs.add(Ability.SETTLER);</span>
+        }
+<span class="fc bfc" id="L190" title="All 2 branches covered.">        else if(token2.equals(&quot;Cross Pair&quot;)){</span>
+<span class="fc" id="L191">            points = 4;</span>
+<span class="fc" id="L192">            abs.add(Ability.PRIEST); abs.add(Ability.PRIEST);</span>
+        }
+<span class="fc bfc" id="L194" title="All 2 branches covered.">        else if(token2.equals(&quot;Anchor Pair&quot;)){</span>
+<span class="fc" id="L195">            points = 4;</span>
+<span class="fc" id="L196">            abs.add(Ability.CAPTAIN); abs.add(Ability.CAPTAIN);</span>
+        }
+<span class="fc bfc" id="L198" title="All 2 branches covered.">        else if(token2.equals(&quot;Cross Pair + House&quot;)){</span>
+<span class="fc" id="L199">            points = 6;</span>
+<span class="fc" id="L200">            abs.add(Ability.PRIEST); abs.add(Ability.PRIEST); abs.add(Ability.SETTLER);</span>
+        }
+<span class="pc bpc" id="L202" title="1 of 2 branches missed.">        else if(token2.equals(&quot;Anchor Pair + House&quot;)){</span>
+<span class="fc" id="L203">            points = 6;</span>
+<span class="fc" id="L204">            abs.add(Ability.CAPTAIN); abs.add(Ability.CAPTAIN); abs.add(Ability.SETTLER);</span>
+        }
+<span class="fc" id="L206">        pile.add(new Expedition(coins, abs, points));</span>
+<span class="fc" id="L207">    }</span>
+
+    /**
+     * Help method for parseCsvToPile
+     * @param token2 Token 2
+     * @param token3 Token 3
+     * @param pile Pile
+     */
+    private void csvParseTrader(String token2, String token3, ArrayList&lt;Card&gt; pile){
+<span class="fc" id="L216">        int points = Integer.parseInt(token2.substring(token2.length()-4, token2.length()-3));</span>
+<span class="fc" id="L217">        int coins  = -1 * Integer.parseInt(token3);</span>
+<span class="fc" id="L218">        Color color = Color.UNDEFINED;</span>
+<span class="fc bfc" id="L219" title="All 2 branches covered.">        if(token2.startsWith(&quot;Black&quot;)){color = Color.BLACK; }</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">        else if(token2.startsWith(&quot;Blue&quot;)){color = Color.BLUE; }</span>
+<span class="fc bfc" id="L221" title="All 2 branches covered.">        else if(token2.startsWith(&quot;Green&quot;)){color = Color.GREEN; }</span>
+<span class="fc bfc" id="L222" title="All 2 branches covered.">        else if(token2.startsWith(&quot;Red&quot;)){color = Color.RED; }</span>
+<span class="pc bpc" id="L223" title="1 of 2 branches missed.">        else if(token2.startsWith(&quot;Yellow&quot;)){color = Color.YELLOW; }</span>
+<span class="fc" id="L224">        pile.add(new Person(coins, 0, Ability.TRADER, points, color));</span>
+<span class="fc" id="L225">    }</span>
+
+    /**
+     * get-Method mainController
+     * @return mainController
+     */
+<span class="nc" id="L231">    public MainController getMainController() {return mainController;}</span>
+
+    /**
+     * set-Method mainController
+     * @param mainController the mainController
+     */
+    public void setMainController(MainController mainController) {
+<span class="nc" id="L238">        this.mainController = mainController;</span>
+<span class="nc" id="L239">    }</span>
+
+    /**
+     * get-Method filePath
+     * @return the filePath
+     */
+    public String getFilePath() {
+<span class="nc" id="L246">        return filePath;</span>
+    }
+
+    /**
+     * set-Method filePath
+     * @param filePath the given filePath
+     */
+    public void setFilePath(String filePath) {
+<span class="nc" id="L254">        this.filePath = filePath;</span>
+<span class="nc" id="L255">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

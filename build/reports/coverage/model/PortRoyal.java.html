@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PortRoyal.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">PortRoyal.java</span></div><h1>PortRoyal.java</h1><pre class="source lang-java linenums">package model;
+import java.io.Serializable;
+import java.util.ArrayList;
+
+
+/**
+ * This class represents the administration of PortRoyal.
+ */
+public class PortRoyal implements Serializable {
+
+	/**
+	 * The active match
+	 */
+	private Match activeMatch;
+
+	/**
+	 * A list of all unfinished matches
+	 */
+	private ArrayList&lt;Match&gt; matchList;
+
+	/**
+	 * A list of the best 10 scores
+	 */
+	private ArrayList&lt;Score&gt; highscore;
+
+	/**
+	 * Constructor of our PortRoyal game
+	 */
+<span class="fc" id="L29">	public PortRoyal() {</span>
+<span class="fc" id="L30">		this.matchList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L31">		this.highscore = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L32">	}</span>
+
+	/**
+	 * This method adds a new match to the list of all unfinished matches
+	 * @param match the match to be added
+	 */
+	public void addMatch(Match match) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">		if(match == null) {</span>
+<span class="nc" id="L40">			throw new IllegalArgumentException();</span>
+		}
+<span class="nc" id="L42">		matchList.add(match);</span>
+<span class="nc" id="L43">	}</span>
+
+	/**
+	 * This method adds a new score to the highscore list
+	 * @param score the score to be added
+	 */
+	public void addScore(Score score) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		if(score == null) {</span>
+<span class="nc" id="L51">			throw new IllegalArgumentException();</span>
+		}
+<span class="nc" id="L53">		highscore.add(score);</span>
+<span class="nc" id="L54">	}</span>
+
+	/**
+	 * This method removes the lowest score from the highscore list
+	 */
+	public void removeScore(){
+<span class="nc bnc" id="L60" title="All 2 branches missed.">		if(highscore.size() != 0){</span>
+<span class="nc" id="L61">			highscore.remove(0);</span>
+		}
+<span class="nc" id="L63">	}</span>
+
+	/**
+	 * This method removes a match from the match list
+	 * @param match the match to be removed
+	 */
+	public void removeMatch(Match match) {
+<span class="nc bnc" id="L70" title="All 2 branches missed.">		if(matchList.size() != 0){</span>
+<span class="nc" id="L71">			matchList.remove(match);</span>
+		}
+<span class="nc" id="L73">	}</span>
+
+	/**
+	 * This method is used to sort the highscore list after adding a new score
+	 */
+	public void sortScore() {
+<span class="nc bnc" id="L79" title="All 2 branches missed.">		for(int i = highscore.size()-1; i&gt;0; i--){</span>
+<span class="nc bnc" id="L80" title="All 2 branches missed.">			for(int n = 0; n &lt; i;n++){</span>
+<span class="nc" id="L81">				int left = highscore.get(n).getScore();</span>
+<span class="nc" id="L82">				int right = highscore.get(n+1).getScore();</span>
+
+<span class="nc bnc" id="L84" title="All 2 branches missed.">				if(left &gt; right){</span>
+<span class="nc" id="L85">					highscore.get(n+1).setScore(left);</span>
+<span class="nc" id="L86">					highscore.get(n).setScore(right);</span>
+				}
+			}
+		}
+<span class="nc" id="L90">	}</span>
+
+	/**
+	 * get-Method active match
+	 * @return activeMatch
+	 */
+<span class="fc" id="L96">	public Match getActiveMatch() {return activeMatch;}</span>
+
+	/**
+	 * set-Method active match
+	 * @param activeMatch the active Match
+	 */
+<span class="nc" id="L102">	public void setActiveMatch(Match activeMatch) {this.activeMatch = activeMatch;}</span>
+
+	/**
+	 * get-Method match list
+	 * @return matchList
+	 */
+<span class="nc" id="L108">	public ArrayList&lt;Match&gt; getMatchList() {return matchList;}</span>
+
+	/**
+	 * set-Method match list
+	 * @param matchList list of matches
+	 */
+<span class="nc" id="L114">	public void setMatchList(ArrayList&lt;Match&gt; matchList) {this.matchList = matchList;}</span>
+
+	/**
+	 * get-Method highscore
+	 * @return highscore
+	 */
+<span class="nc" id="L120">	public ArrayList&lt;Score&gt; getHighscore() {return highscore;}</span>
+
+	/**
+	 * set-Method highscore
+	 * @param highscore highscore
+	 */
+<span class="nc" id="L126">	public void setHighscore(ArrayList&lt;Score&gt; highscore) {this.highscore = highscore;}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

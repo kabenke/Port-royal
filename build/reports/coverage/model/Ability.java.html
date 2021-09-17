@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Ability.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Ability.java</span></div><h1>Ability.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+
+/**
+ * This enum is used to assign a Ability to a card. Quick Links:
+ * {@link #SETTLER}
+ * {@link #CAPTAIN}
+ * {@link #PRIEST}
+ * {@link #JOKER}
+ * {@link #ADMIRAL}
+ * {@link #TRADER}
+ * {@link #GOVERNOR}
+ * {@link #JESTER}
+ * {@link #PIRATE}
+ * {@link #SAILOR}
+ * {@link #MADEMOISELLE}
+ */
+<span class="fc" id="L19">public enum Ability implements Serializable {</span>
+	/**
+	 * This is the settler. This card is an artifact to fulfill expeditions.
+	 */
+<span class="fc" id="L23">	SETTLER, </span>
+
+	/**
+	 * This is the captain. This card is an artifact to fulfill expeditions.
+	 */
+<span class="fc" id="L28">	CAPTAIN, </span>
+
+	/**
+	 * This is the priest. This card is an artifact to fulfill expeditions.
+	 */
+<span class="fc" id="L33">	 PRIEST, </span>
+
+	/**
+	 * This is the joker. This card can be used as a Settler, Captain or a Priest to fulfill expeditions.
+	 */
+<span class="fc" id="L38">	 JOKER, </span>
+
+	/**
+	 * This is the admiral. If you have this card in your hand when there are five or more cards in the harbour display
+	 * and it is your turn to take a card out of it you get 2 gold.
+	 */
+<span class="fc" id="L44">	 ADMIRAL, </span>
+
+	/**
+	 * This is the trader. If you have this card in your hand and you take a ship with the same color you get one more
+	 * gold as displayed on the ship card.
+	 */
+<span class="fc" id="L50">	 TRADER, </span>
+
+	/**
+	 * This is the governor. If you have this card in your hand, you are able to draw one additional card every time
+	 * it`s your turn.
+	 */
+<span class="fc" id="L56">	 GOVERNOR, </span>
+
+	/**
+	 * This is the jester. If you are currently not the active player and during Phase 2 it is your tun to take a card
+	 * and there are no cards left to take, you get one coin for every jester in your hand.
+	 * If the harbour display is invalid and the active player can´t repel the ship, every Player get´s one coin for
+	 * each Jester in his hand.
+	 */
+<span class="fc" id="L64">	 JESTER, </span>
+
+	/**
+	 *This is the pirate. This card has two swords on it to repel ships.
+	 */
+<span class="fc" id="L69">	 PIRATE, </span>
+
+	/**
+	 *This is the sailor. This card has one sword on it to repel ships.
+	 */
+<span class="fc" id="L74">	 SAILOR, </span>
+
+	/**
+	 * This is the mademoiselle. This card discounts the cost of a Person by one for every Mademoiselle in the hand of
+	 * a player. Cards can never cost less than zero with this card.
+	 */
+<span class="fc" id="L80">	 MADEMOISELLE;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

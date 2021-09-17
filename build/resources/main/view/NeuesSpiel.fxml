@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" type="AnchorPane" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextField fx:id="playerNameField1" layoutX="261.0" layoutY="200.0" prefHeight="38.0" prefWidth="227.0" promptText="Spieler 01" styleClass="playerNameField" text="Spieler 01">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="playerNameField2" layoutX="261.0" layoutY="300.0" prefHeight="38.0" prefWidth="227.0" promptText="Spieler 02" styleClass="playerNameField" text="Spieler 02">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="playerNameField3" layoutX="261.0" layoutY="400.0" prefHeight="38.0" prefWidth="227.0" promptText="Spieler 03" styleClass="playerNameField" text="Spieler 03">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="playerNameField4" layoutX="261.0" layoutY="500.0" prefHeight="38.0" prefWidth="227.0" promptText="Spieler 04" styleClass="playerNameField" text="Spieler 04">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="playerNameField5" layoutX="261.0" layoutY="600.0" prefHeight="38.0" prefWidth="227.0" promptText="Spieler 05" styleClass="playerNameField" text="Spieler 05">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </TextField>
+      <ImageView fx:id="minus1" fitHeight="38.0" fitWidth="39.0" layoutX="108.0" layoutY="200.0" onMouseClicked="#onDelete1" onMouseEntered="#onMinus1Enter" onMouseExited="#onMinus1Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="minus2" fitHeight="38.0" fitWidth="39.0" layoutX="108.0" layoutY="301.0" onMouseClicked="#onDelete2" onMouseEntered="#onMinus2Enter" onMouseExited="#onMinus2Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="minus3" fitHeight="38.0" fitWidth="39.0" layoutX="108.0" layoutY="400.0" onMouseClicked="#onDelete3" onMouseEntered="#onMinus3Enter" onMouseExited="#onMinus3Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="minus4" fitHeight="38.0" fitWidth="39.0" layoutX="108.0" layoutY="500.0" onMouseClicked="#onDelete4" onMouseEntered="#onMinus4Enter" onMouseExited="#onMinus4Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="minus5" fitHeight="38.0" fitWidth="39.0" layoutX="108.0" layoutY="600.0" onMouseClicked="#onDelete5" onMouseEntered="#onMinus5Enter" onMouseExited="#onMinus5Exit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImg1" fitHeight="100.0" fitWidth="100.0" layoutX="160.0" layoutY="170.0" onMouseClicked="#onAvatarClick1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar01.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImg2" fitHeight="100.0" fitWidth="100.0" layoutX="160.0" layoutY="270.0" onMouseClicked="#onAvatarClick2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar02.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImg3" fitHeight="100.0" fitWidth="100.0" layoutX="160.0" layoutY="370.0" onMouseClicked="#onAvatarClick3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar03.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImg4" fitHeight="100.0" fitWidth="100.0" layoutX="160.0" layoutY="470.0" onMouseClicked="#onAvatarClick4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar02.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="avatarImg5" fitHeight="100.0" fitWidth="100.0" layoutX="160.0" layoutY="570.0" onMouseClicked="#onAvatarClick5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@avatars/avatar01.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="playerType1" layoutX="519.0" layoutY="224.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mensch" textAlignment="CENTER" wrappingWidth="160.0">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="playerType2" layoutX="519.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KI: Leicht" textAlignment="CENTER" wrappingWidth="160.0">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="playerType3" layoutX="519.0" layoutY="424.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KI: Mittel" textAlignment="CENTER" wrappingWidth="160.0">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="playerType4" layoutX="519.0" layoutY="524.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KI: Mittel" textAlignment="CENTER" wrappingWidth="160.0">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="playerType5" layoutX="519.0" layoutY="624.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KI: Schwierig" textAlignment="CENTER" wrappingWidth="160.0">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="left1" fitHeight="25.0" fitWidth="25.0" layoutX="510.0" layoutY="204.0" onMouseClicked="#onPrev1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="left2" fitHeight="25.0" fitWidth="25.0" layoutX="510.0" layoutY="304.0" onMouseClicked="#onPrev2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right1" fitHeight="25.0" fitWidth="25.0" layoutX="674.0" layoutY="205.0" onMouseClicked="#onNext1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right2" fitHeight="25.0" fitWidth="25.0" layoutX="674.0" layoutY="305.0" onMouseClicked="#onNext2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="left3" fitHeight="25.0" fitWidth="25.0" layoutX="510.0" layoutY="404.0" onMouseClicked="#onPrev3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="left4" fitHeight="25.0" fitWidth="25.0" layoutX="510.0" layoutY="504.0" onMouseClicked="#onPrev4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="left5" fitHeight="25.0" fitWidth="25.0" layoutX="510.0" layoutY="604.0" onMouseClicked="#onPrev5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/left.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right3" fitHeight="25.0" fitWidth="25.0" layoutX="674.0" layoutY="405.0" onMouseClicked="#onNext3" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right4" fitHeight="25.0" fitWidth="25.0" layoutX="674.0" layoutY="505.0" onMouseClicked="#onNext4" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="right5" fitHeight="25.0" fitWidth="25.0" layoutX="674.0" layoutY="605.0" onMouseClicked="#onNext5" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/right.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="plusButton" fitHeight="39.0" fitWidth="39.0" layoutX="191.0" layoutY="400.0" onMouseClicked="#onPlusClick" onMouseEntered="#onPlusEnter" onMouseExited="#onPlusExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/plusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#onBackClick" onMouseEntered="#onBackEnter" onMouseExited="#onBackExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/arrowLeftButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="createGameButton" fitHeight="48.0" fitWidth="227.0" layoutX="527.0" layoutY="689.0" onMouseClicked="#onCreateGame" onMouseEntered="#onCreateGameEnter" onMouseExited="#onCreateGameExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/createGameButton.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="newGameText" layoutX="440.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Neues Spiel" textAlignment="CENTER" wrappingWidth="400.2977294921875">
+         <font>
+            <Font name="Sitka Small" size="45.0" />
+         </font>
+      </Text>
+      <Text fx:id="simText" layoutX="840.0" layoutY="475.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5" textAlignment="CENTER" wrappingWidth="206.0">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Label layoutX="788.0" layoutY="392.0" text="Simulationsgeschwindigkeit">
+         <font>
+            <Font name="Sitka Small" size="27.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="kICheck" fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="300.0" onMouseClicked="#onKICheckClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/checkboxButtonUnchecked.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="standardCheck" fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="241.0" onMouseClicked="#onStandardCheckClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/checkboxButtonChecked.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="702.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Regelwerk" textAlignment="CENTER" wrappingWidth="558.78515625">
+         <font>
+            <Font name="Sitka Small" size="27.0" />
+         </font>
+      </Text>
+      <Text layoutX="923.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Standard" wrappingWidth="174.8600082397461">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <Text layoutX="923.0" layoutY="334.0" strokeType="OUTSIDE" strokeWidth="0.0" text="KI-Turnier" wrappingWidth="174.8600082397461">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="minusSim" fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="441.0" onMouseClicked="#onSimMinusClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/minusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="plusSim" fitHeight="60.0" fitWidth="60.0" layoutX="980.0" layoutY="441.0" onMouseClicked="#onSimPlusClick" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/plusButton.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="playerShuffleCheck" fitHeight="60.0" fitWidth="60.0" layoutX="840.0" layoutY="587.0" onMouseClicked="#onPlayerShuffleCheck" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/checkboxButtonChecked.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="923.0" layoutY="623.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Zufällige Reihenfolge" wrappingWidth="288.8600082397461">
+         <font>
+            <Font name="Sitka Small" size="22.0" />
+         </font>
+      </Text>
+   </children>
+</fx:root>

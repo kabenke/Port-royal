@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>PlayerHelp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">PlayerHelp.java</span></div><h1>PlayerHelp.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+
+/**
+ * Helping class to prevent Player from becoming a god class.
+ */
+public class PlayerHelp implements Serializable {
+
+    /**
+     * player to help
+     */
+    private Player player;
+
+    /**
+     * constructor to create a help object for a Player
+     * @param player the player to help
+     */
+<span class="nc" id="L19">    public PlayerHelp(Player player) {</span>
+<span class="nc" id="L20">        this.player = player;</span>
+<span class="nc" id="L21">    }</span>
+
+    /**
+     * returns an int array, that contains the amounts of times a card is in the players hand
+     * @return an int array, that contains the amounts of times a card is in the players hand
+     */
+    public int[] getCardCounts() {
+<span class="nc" id="L28">        int[] cardCounts = new int[8];</span>
+<span class="nc bnc" id="L29" title="All 2 branches missed.">        for(Card card : player.getNonGoldCards()) {</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">            if(card instanceof Person) {</span>
+<span class="nc bnc" id="L31" title="All 9 branches missed.">                switch(((Person) card).getAbility()) {</span>
+<span class="nc" id="L32">                    case JOKER: cardCounts[0]++;</span>
+<span class="nc" id="L33">                        break;</span>
+
+<span class="nc" id="L35">                    case CAPTAIN: cardCounts[1]++;</span>
+<span class="nc" id="L36">                        break;</span>
+
+<span class="nc" id="L38">                    case PRIEST: cardCounts[2]++;</span>
+<span class="nc" id="L39">                        break;</span>
+
+<span class="nc" id="L41">                    case SETTLER: cardCounts[3]++;</span>
+<span class="nc" id="L42">                        break;</span>
+
+<span class="nc" id="L44">                    case MADEMOISELLE: cardCounts[4]++;</span>
+<span class="nc" id="L45">                        break;</span>
+
+<span class="nc" id="L47">                    case GOVERNOR: cardCounts[5]++;</span>
+<span class="nc" id="L48">                        break;</span>
+
+<span class="nc" id="L50">                    case JESTER: cardCounts[6]++;</span>
+<span class="nc" id="L51">                        break;</span>
+
+<span class="nc" id="L53">                    case ADMIRAL: cardCounts[7]++;</span>
+                        break;
+                }
+            }
+<span class="nc" id="L57">        }</span>
+<span class="nc" id="L58">        return cardCounts;</span>
+    }
+
+    /**
+     * get-Method player
+     * @return the player object that is being helped
+     */
+    public Player getPlayer() {
+<span class="nc" id="L66">        return player;</span>
+    }
+
+    /**
+     * set-Method player
+     * @param player the player object to help
+     */
+    public void setPlayer(Player player) {
+<span class="nc" id="L74">        this.player = player;</span>
+<span class="nc" id="L75">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

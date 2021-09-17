@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AllCards.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">AllCards.java</span></div><h1>AllCards.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
+/**
+ * This class is a collection of all cards in the game.
+ */
+public class AllCards implements Serializable {
+
+	/**
+	 * ArrayList of all TaxRaise cards
+	 */
+	private ArrayList&lt;TaxRaise&gt; taxRaiseCards;
+
+	/**
+	 * ArrayList of all Expedition cards
+	 */
+	private ArrayList&lt;Expedition&gt; expeditionCards;
+
+	/**
+	 * ArrayList of all Person cards
+	 */
+	private ArrayList&lt;Person&gt; personCards;
+
+	/**
+	 * ArrayList of all Ship cards
+	 */
+	private ArrayList&lt;Ship&gt; shipCards;
+
+	/**
+	 * Constructor of AllCards
+	 */
+<span class="nc" id="L34">	public AllCards() {</span>
+
+<span class="nc" id="L36">	}</span>
+
+	/**
+	 * get-Method TaxRaiseCards
+	 * @return ArrayList of TaxRaiseCards
+	 */
+	public ArrayList&lt;TaxRaise&gt; getTaxRaiseCards() {
+<span class="nc" id="L43">		return taxRaiseCards;</span>
+	}
+
+	/**
+	 * set-Method TaxRaiseCards
+	 * @param taxRaiseCards ArrayList of TaxRaiseCards
+	 */
+	public void setTaxRaiseCards(ArrayList&lt;TaxRaise&gt; taxRaiseCards) {
+<span class="nc" id="L51">		this.taxRaiseCards = taxRaiseCards;</span>
+<span class="nc" id="L52">	}</span>
+
+	/**
+	 * get-Method ExpeditionCards
+	 * @return ArrayList of ExpeditionCards
+	 */
+	public ArrayList&lt;Expedition&gt; getExpeditionCards() {
+<span class="nc" id="L59">		return expeditionCards;</span>
+	}
+
+	/**
+	 * set-Method ExpeditionCards
+	 * @param expeditionCards ArrayList of ExpeditionCards
+	 */
+	public void setExpeditionCards(ArrayList&lt;Expedition&gt; expeditionCards) {
+<span class="nc" id="L67">		this.expeditionCards = expeditionCards;</span>
+<span class="nc" id="L68">	}</span>
+
+	/**
+	 * get-Method PersonCards
+	 * @return ArrayList PersonCards
+	 */
+	public ArrayList&lt;Person&gt; getPersonCards() {
+<span class="nc" id="L75">		return personCards;</span>
+	}
+
+	/**
+	 * set-Method PersonCards
+	 * @param personCards ArrayList PersonCards
+	 */
+	public void setPersonCards(ArrayList&lt;Person&gt; personCards) {
+<span class="nc" id="L83">		this.personCards = personCards;</span>
+<span class="nc" id="L84">	}</span>
+
+	/**
+	 * get-Method ShipCards
+	 * @return ArrayList ShipCards
+	 */
+	public ArrayList&lt;Ship&gt; getShipCards() {
+<span class="nc" id="L91">		return shipCards;</span>
+	}
+
+	/**
+	 * set-Method ShipCards
+	 * @param shipCards ArrayList ShipCards
+	 */
+	public void setShipCards(ArrayList&lt;Ship&gt; shipCards) {
+<span class="nc" id="L99">		this.shipCards = shipCards;</span>
+<span class="nc" id="L100">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

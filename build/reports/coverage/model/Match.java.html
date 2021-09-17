@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Match.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Match.java</span></div><h1>Match.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Stack;
+
+/**
+ * This class represents a match.
+ */
+public class Match implements Serializable {
+
+	/**
+	 * the pile from which cards will be drawn
+	 */
+	private ArrayList&lt;Card&gt; drawPile;
+
+	/**
+	 * all drawn expedition cards
+	 */
+	private ArrayList&lt;Expedition&gt; expeditionDisplay;
+
+	/**
+	 * the determined initial card order
+	 */
+	private ArrayList&lt;Card&gt; initialCardOrder;
+
+	/**
+	 * the speed of the simulation, if it is a simulation
+	 */
+	private int aiSpeed;
+
+	/**
+	 * Previous turns
+	 */
+	private Stack&lt;Turn&gt; undoTurnHistory;
+
+	/**
+	 * the list of players
+	 */
+	private ArrayList&lt;Player&gt; playerList;
+
+	/**
+	 * the history containing all made turns
+	 */
+	private ArrayList&lt;Turn&gt; turnHistory;
+
+	/**
+	 * the pile to which cards will be discarded
+	 */
+	private ArrayList&lt;Card&gt; discardPile;
+
+	/**
+	 * the player that was the active player in the last turn
+	 */
+	private Player activePlayerInLastTurn;
+
+	/**
+	 * provides helping methods
+	 */
+	private MatchHelp matchHelp;
+
+	/**
+	 * the shuffletype
+	 */
+	private boolean randomShuffle;
+
+	/**
+	 * the timestamp of the match
+	 */
+	private Date timestamp;
+
+	/**
+	 * Constructor that creates a new Match
+	 */
+<span class="fc" id="L77">	public Match() {</span>
+<span class="fc" id="L78">		this.playerList = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L79">		this.turnHistory = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L80">		this.discardPile = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L81">		this.drawPile = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L82">		this.expeditionDisplay = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L83">		this.aiSpeed = 5;</span>
+<span class="fc" id="L84">		this.initialCardOrder = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L85">		this.matchHelp = new MatchHelp(this);</span>
+<span class="fc" id="L86">		this.undoTurnHistory = new Stack&lt;&gt;();</span>
+<span class="fc" id="L87">		this.timestamp = new Date(System.currentTimeMillis());</span>
+<span class="fc" id="L88">	}</span>
+
+	/**
+	 * adds a card to the discard pile
+	 * @param card the card to be added to the discard pile
+	 */
+	public void toDiscardPile(Card card) throws IllegalArgumentException{
+<span class="nc" id="L95">		discardPile.add(0, card); /* adds the given card at the beginning of the list */</span>
+<span class="nc" id="L96">	}</span>
+
+	/**
+	 * adds a card from the draw pile to the harbour display in the given turn
+	 * @param turn the turn that the card will be drawn to
+	 * @throws IllegalArgumentException if the draw pile is empty
+	 */
+	public void drawFromPile(Turn turn) {
+<span class="nc bnc" id="L104" title="All 2 branches missed.">		if(this.drawPile.isEmpty()) {</span>
+<span class="nc" id="L105">			throw new IllegalArgumentException(&quot;Draw pile is empty&quot;);</span>
+		}
+<span class="nc" id="L107">		Card drawnCard = this.drawPile.remove(0);</span>
+<span class="nc" id="L108">		turn.addToHarborDisplay(drawnCard);</span>
+<span class="nc" id="L109">	}</span>
+
+	/**
+	 * removes a card from the draw pile and returns it
+	 * @return the card that got removed
+	 */
+	public Card drawGoldCard() {
+<span class="nc bnc" id="L116" title="All 2 branches missed.">		if(this.drawPile.isEmpty()) {</span>
+<span class="nc" id="L117">			throw new IllegalArgumentException(&quot;draw pile is empty&quot;);</span>
+		}
+<span class="nc" id="L119">		return this.drawPile.remove(0);</span>
+	}
+
+	/**
+	 * clones the state of the object and returns it
+	 * @return a new object containing the state of the calling object
+	 */
+	@Override
+	public Match clone() {
+<span class="nc" id="L128">		Match clonedMatch = new Match();</span>
+<span class="nc" id="L129">		ArrayList&lt;Card&gt; clonedDiscardPile = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L130">		ArrayList&lt;Card&gt; clonedDrawPile = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L131">		ArrayList&lt;Expedition&gt; clonedExpeditionDisplay = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L132">		ArrayList&lt;Turn&gt; clonedTurnHistory = new ArrayList&lt;&gt;();</span>
+
+<span class="nc bnc" id="L134" title="All 2 branches missed.">		for(Card card : this.discardPile) { /* clones every card from the discard pile */</span>
+<span class="nc" id="L135">			clonedDiscardPile.add(card.clone());</span>
+<span class="nc" id="L136">		}</span>
+<span class="nc" id="L137">		clonedMatch.setDiscardPile(clonedDiscardPile);</span>
+
+<span class="nc bnc" id="L139" title="All 2 branches missed.">		for(Card card : this.drawPile) { /* clones every card from the draw pile */</span>
+<span class="nc" id="L140">			clonedDrawPile.add(card.clone());</span>
+<span class="nc" id="L141">		}</span>
+<span class="nc" id="L142">		clonedMatch.setDrawPile(clonedDrawPile);</span>
+
+<span class="nc bnc" id="L144" title="All 2 branches missed.">		for(Expedition expedition : this.expeditionDisplay) { /* clones every card from the expedition display */</span>
+<span class="nc" id="L145">			clonedExpeditionDisplay.add(expedition.clone());</span>
+<span class="nc" id="L146">		}</span>
+<span class="nc" id="L147">		clonedMatch.setExpeditionDisplay(clonedExpeditionDisplay);</span>
+
+<span class="nc bnc" id="L149" title="All 2 branches missed.">		for(Turn turn : this.turnHistory) { /* clones every turn from the turn history */</span>
+<span class="nc" id="L150">			clonedTurnHistory.add(turn.clone());</span>
+<span class="nc" id="L151">		}</span>
+<span class="nc" id="L152">		clonedMatch.setTurnHistory(clonedTurnHistory);</span>
+
+<span class="nc bnc" id="L154" title="All 2 branches missed.">		for(Player player : this.playerList) { /* clones every player from the player list */</span>
+<span class="nc" id="L155">			clonedMatch.addPlayer(player.clone());</span>
+<span class="nc" id="L156">		}</span>
+
+<span class="nc" id="L158">		clonedMatch.aiSpeed = this.aiSpeed; /* sets the aiSpeed */</span>
+
+<span class="nc bnc" id="L160" title="All 2 branches missed.">		if(activePlayerInLastTurn != null) {</span>
+<span class="nc" id="L161">			clonedMatch.setActivePlayerInLastTurn(activePlayerInLastTurn.clone());</span>
+		}
+
+<span class="nc" id="L164">		clonedMatch.setInitialCardOrder(this.initialCardOrder);</span>
+
+<span class="nc" id="L166">		return clonedMatch;</span>
+	}
+
+	/**
+	 * adds a player to the player list of the match
+	 * @param player the player that is to be added
+	 */
+	public void addPlayer(Player player) {
+<span class="nc" id="L174">		final int MAX_PLAYERS = 5;</span>
+<span class="nc bnc" id="L175" title="All 2 branches missed.">		if(this.playerList.size() &lt; MAX_PLAYERS) {</span>
+<span class="nc bnc" id="L176" title="All 2 branches missed.">			if(this.playerList.isEmpty()) {</span>
+<span class="nc" id="L177">				this.activePlayerInLastTurn = player;</span>
+			}
+<span class="nc" id="L179">			this.playerList.add(player);</span>
+		} else {
+<span class="nc" id="L181">			throw new IllegalArgumentException(&quot;List already full&quot;);</span>
+		}
+<span class="nc" id="L183">	}</span>
+
+	/**
+	 * get-Method drawPile
+	 * @return the ArrayList that represents the drawPile
+	 */
+	public ArrayList&lt;Card&gt; getDrawPile() {
+<span class="nc" id="L190">		return drawPile;</span>
+	}
+
+	/**
+	 * set-Method drawPile
+	 * @param drawPile the ArrayList to set the drawPile to
+	 */
+	public void setDrawPile(ArrayList&lt;Card&gt; drawPile) {
+<span class="fc" id="L198">		this.drawPile = drawPile;</span>
+<span class="fc" id="L199">	}</span>
+
+	/**
+	 * get-Method expeditionDisplay
+	 * @return the ArrayList that represents the expeditionDisplay
+	 */
+	public ArrayList&lt;Expedition&gt; getExpeditionDisplay() {
+<span class="nc" id="L206">		return expeditionDisplay;</span>
+	}
+
+	/**
+	 * set-Method expeditionDisplay
+	 * @param expeditionDisplay the ArrayList to set the expeditionDisplay to
+	 */
+	public void setExpeditionDisplay(ArrayList&lt;Expedition&gt; expeditionDisplay) {
+<span class="nc" id="L214">		this.expeditionDisplay = expeditionDisplay;</span>
+<span class="nc" id="L215">	}</span>
+
+	/**
+	 * get-Method initialCardOrder
+	 * @return the ArrayList that contains the initial card order
+	 */
+	public ArrayList&lt;Card&gt; getInitialCardOrder() {
+<span class="nc" id="L222">		return initialCardOrder;</span>
+	}
+
+	/**
+	 * set-Method drawPile
+	 * @param initialCardOrder the card order that the draw pile should have initially
+	 */
+	public void setInitialCardOrder(ArrayList&lt;Card&gt; initialCardOrder) {
+<span class="nc" id="L230">		this.initialCardOrder = initialCardOrder;</span>
+<span class="nc" id="L231">	}</span>
+
+	/**
+	 * get-Method aiSpeed
+	 * @return the simulation speed if the game is a simulation
+	 */
+	public int getAiSpeed() {
+<span class="nc" id="L238">		return aiSpeed;</span>
+	}
+
+	/**
+	 * set-Method aiSpeed
+	 * @param aiSpeed a value between 0 and 10 to represent the speed of the simulation
+	 */
+	public void setAiSpeed(int aiSpeed) {
+<span class="nc" id="L246">		this.aiSpeed = aiSpeed;</span>
+<span class="nc" id="L247">	}</span>
+
+	/**
+	 * get-Method playerList
+	 * @return the ArrayList that contains all the players of the match
+	 */
+	public ArrayList&lt;Player&gt; getPlayerList() {
+<span class="nc" id="L254">		return playerList;</span>
+	}
+
+	/**
+	 * set-Method playerList
+	 * @param playerList the ArrayList of players to add to the match
+	 */
+	public void setPlayerList(ArrayList&lt;Player&gt; playerList) {
+<span class="nc" id="L262">		this.playerList = playerList;</span>
+<span class="nc" id="L263">	}</span>
+
+	/**
+	 * get-Method turnHistory
+	 * @return the ArrayList of all turns that have been made in the match
+	 */
+	public ArrayList&lt;Turn&gt; getTurnHistory() {
+<span class="nc" id="L270">		return turnHistory;</span>
+	}
+
+	/**
+	 * set-Method turnHistory
+	 * @param turnHistory the ArrayList containing turns to represent the turn history
+	 */
+	public void setTurnHistory(ArrayList&lt;Turn&gt; turnHistory) {
+<span class="nc" id="L278">		this.turnHistory = turnHistory;</span>
+<span class="nc" id="L279">	}</span>
+
+	/**
+	 * get-Method discardPile
+	 * @return the ArrayList of cards that represents the discard pile
+	 */
+	public ArrayList&lt;Card&gt; getDiscardPile() {
+<span class="nc" id="L286">		return discardPile;</span>
+	}
+
+	/**
+	 * set-Method discardPile
+	 * @param discardPile the ArrayList of Cards to represent the discard pile
+	 */
+	public void setDiscardPile(ArrayList&lt;Card&gt; discardPile) {
+<span class="nc" id="L294">		this.discardPile = discardPile;</span>
+<span class="nc" id="L295">	}</span>
+
+	/**
+	 * get-Method activePlayerInLastTurn
+	 * @return the Player that was active in the last Turn of the history
+	 */
+	public Player getActivePlayerInLastTurn() {
+<span class="nc" id="L302">		return activePlayerInLastTurn;</span>
+	}
+
+	/**
+	 * set-Method activePlayerInLastTurn
+	 * @param activePlayerInLastTurn the Player that was active in the last Turn of the turn history
+	 */
+	public void setActivePlayerInLastTurn(Player activePlayerInLastTurn) {
+<span class="nc" id="L310">		this.activePlayerInLastTurn = activePlayerInLastTurn;</span>
+<span class="nc" id="L311">	}</span>
+
+	/**
+	 * get-Method matchHelp
+	 * @return the matchHelp object
+	 */
+	public MatchHelp getMatchHelp() {
+<span class="nc" id="L318">		return matchHelp;</span>
+	}
+
+	/**
+	 * set-Method matchHelp
+	 * @param matchHelp the object to set to
+	 */
+	public void setMatchHelp(MatchHelp matchHelp) {
+<span class="nc" id="L326">		this.matchHelp = matchHelp;</span>
+<span class="nc" id="L327">	}</span>
+
+	/**
+	 * Get-Method for the active Turn in the turnHistory
+	 * @return return the active turn in the history
+	 */
+	public Turn getActiveTurn(){
+<span class="nc" id="L334">		return turnHistory.get(turnHistory.size()-1);</span>
+	}
+
+	/**
+	 * set-Method for the shuffletype
+	 * @param randomShuffle the shuffletype
+	 */
+<span class="nc" id="L341">	public void setRandomShuffle(boolean randomShuffle){ this.randomShuffle = randomShuffle; }</span>
+
+	/**
+	 * Get-Method for the shuffletype
+	 * @return return the shuffletype of the match
+	 */
+<span class="nc" id="L347">	public boolean getRandomShuffle(){ return this.randomShuffle; }</span>
+
+	/**
+	 * Get-Method for the undoTurnHistory Stack
+	 * @return the Stack that contains the undoTurnHistory
+	 */
+<span class="nc" id="L353">	public Stack&lt;Turn&gt; getUndoTurnHistory() { return undoTurnHistory; }</span>
+
+	/**
+	 * Set-Method for the undoTurnHistory Stack
+	 * @param undoTurnHistory Stack for the undoTurnHistory
+	 */
+<span class="nc" id="L359">	public void setUndoTurnHistory(Stack&lt;Turn&gt; undoTurnHistory) { this.undoTurnHistory = undoTurnHistory; }</span>
+
+	/**
+	 * Set-Method for the timestamp of the match
+	 * @return the timestamp
+	 */
+	public Date getTimestamp(){
+<span class="nc" id="L366">		return this.timestamp;</span>
+	}
+
+	/**
+	 * Get-Method for the timestamp of the match
+	 * @param timestamp the timestamp
+	 */
+	public void setTimestamp(Date timestamp) {
+<span class="nc" id="L374">		this.timestamp = timestamp;</span>
+<span class="nc" id="L375">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

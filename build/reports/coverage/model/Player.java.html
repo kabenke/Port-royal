@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Player.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Player.java</span></div><h1>Player.java</h1><pre class="source lang-java linenums">package model;
+import java.util.ArrayList;
+import java.io.Serializable;
+/**
+ * This class represents a Player of the Game.
+ */
+public class Player implements Serializable{
+
+	/**
+	 * the Swords a Player collected
+	 */
+	protected int swords;
+
+	/**
+	 * whether the Player did an Expedition or not
+	 */
+	protected boolean didExp;
+
+	/**
+	 * the Victory Points a Player collected
+	 */
+	protected int victoryPoints;
+
+	/**
+	 * the Trader Bonuses a Player collected [BLUE, RED, GREEN, BLACK, YELLOW]
+	 */
+	protected int[] traderBonus;
+
+	/**
+	 * whether the Player is eligible for the Highscore
+	 */
+	protected boolean eligibleForHighscore;
+
+	/**
+	 * Player´s name
+	 */
+	protected String name;
+
+	/**
+	 * whether the Player is a Human or an AI
+	 */
+	protected PlayerType playerType;
+
+	/**
+	 * The non GoldCards a Player has in his hand
+	 */
+	protected ArrayList&lt;Card&gt; nonGoldCards;
+
+	/**
+	 * The GoldCards a Player has in his hand
+	 */
+	protected ArrayList&lt;Card&gt; goldCards;
+
+	/**
+	 * whether the Player is the Active or Passive Player
+	 */
+	protected boolean isActive;
+
+
+
+	/**
+	 * Number of Moves
+	 */
+	protected int moveCount;
+
+	/**
+	 * id of the avatar
+	 */
+	protected int avatarID;
+
+	/**
+	 * helping object to prevent god class
+	 */
+	private PlayerHelp playerHelp;
+
+	/**
+	 * Constructor to create a Player
+	 * @param name Name of the Player
+	 * @param playerType Player Type of the Player
+	 */
+<span class="nc" id="L81">	public Player(String name, PlayerType playerType) {</span>
+<span class="nc" id="L82">		this.name = name;</span>
+<span class="nc" id="L83">		this.playerType = playerType;</span>
+<span class="nc" id="L84">		this.moveCount = 0;</span>
+<span class="nc" id="L85">		this.goldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L86">		this.nonGoldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L87">		this.eligibleForHighscore = true;</span>
+<span class="nc" id="L88">		this.traderBonus = new int[5];</span>
+<span class="nc" id="L89">		this.victoryPoints = 0;</span>
+<span class="nc" id="L90">		this.didExp = false;</span>
+<span class="nc" id="L91">		this.swords = 0;</span>
+<span class="nc" id="L92">		this.playerHelp = new PlayerHelp(this);</span>
+<span class="nc" id="L93">	}</span>
+
+	/**
+	 * Constructor for a Player
+	 */
+<span class="nc" id="L98">	public Player() {</span>
+<span class="nc" id="L99">		this.moveCount = 0;</span>
+<span class="nc" id="L100">		this.goldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L101">		this.nonGoldCards = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L102">		this.eligibleForHighscore = true;</span>
+<span class="nc" id="L103">		this.traderBonus = new int[5];</span>
+<span class="nc" id="L104">		this.victoryPoints = 0;</span>
+<span class="nc" id="L105">		this.didExp = false;</span>
+<span class="nc" id="L106">		this.swords = 0;</span>
+<span class="nc" id="L107">		this.playerHelp = new PlayerHelp(this);</span>
+<span class="nc" id="L108">	}</span>
+
+	/**
+	 * This method adds a new Card to the Hand of the Player
+	 * @param card the added card
+	 */
+	public void addCard(Card card) throws IllegalArgumentException {
+<span class="nc bnc" id="L115" title="All 2 branches missed.">		if(card == null) {</span>
+<span class="nc" id="L116">			throw new IllegalArgumentException();</span>
+		}
+<span class="nc bnc" id="L118" title="All 2 branches missed.">		if(!card.isFaceUp){</span>
+<span class="nc" id="L119">			goldCards.add(card);</span>
+		}
+		else
+		{
+<span class="nc" id="L123">			nonGoldCards.add(card);</span>
+		}
+<span class="nc" id="L125">	}</span>
+
+	/**
+	 * This method removes a Card from the Player´s hand
+	 * @param card the card to remove
+	 */
+	public void removeCard(Card card) {
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		if(card == null) {</span>
+<span class="nc" id="L133">			throw new IllegalArgumentException();</span>
+		}
+<span class="nc bnc" id="L135" title="All 2 branches missed.">		if(!card.isFaceUp){</span>
+<span class="nc" id="L136">			goldCards.remove(card);</span>
+		}
+		else
+		{
+<span class="nc" id="L140">			nonGoldCards.remove(card);</span>
+		}
+<span class="nc" id="L142">	}</span>
+
+	/**
+	 * This method is used to create a clone of the Player
+	 * @return Clone of the Player
+	 */
+	@Override
+	public Player clone() {
+<span class="nc" id="L150">		Player playerClone = new Player(this.name,this.playerType);</span>
+<span class="nc" id="L151">		playerClone.setDidExp(this.getDidExp());</span>
+<span class="nc" id="L152">		playerClone.setGoldCards(new ArrayList&lt;&gt;());</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">		for(Card card : this.getGoldCards()) { /* clones every Card in goldCards */</span>
+<span class="nc" id="L154">			playerClone.addCard(card.clone());</span>
+<span class="nc" id="L155">		}</span>
+<span class="nc" id="L156">		playerClone.setIsActive(this.isActive);</span>
+<span class="nc" id="L157">		playerClone.setEligibleForHighscore(this.eligibleForHighscore);</span>
+<span class="nc" id="L158">		playerClone.setMoveCount(this.getMoveCount());</span>
+<span class="nc" id="L159">		playerClone.setNonGoldCards(new ArrayList&lt;&gt;());</span>
+<span class="nc bnc" id="L160" title="All 2 branches missed.">		for(Card card : this.getNonGoldCards()) { /* clones every Card in nonGoldCards */</span>
+<span class="nc" id="L161">			playerClone.addCard(card.clone());</span>
+<span class="nc" id="L162">		}</span>
+<span class="nc" id="L163">		playerClone.setSwords(this.getSwords());</span>
+<span class="nc" id="L164">		playerClone.setTraderBonus(this.getTraderBonus());</span>
+<span class="nc" id="L165">		playerClone.setVictoryPoints(this.getVictoryPoints());</span>
+<span class="nc" id="L166">		return playerClone;</span>
+	}
+
+	/**
+	 * get-Method Name
+	 * @return name
+	 */
+<span class="nc" id="L173">	public String getName() {return name;}</span>
+
+	/**
+	 * set-Method Name
+	 * @param name name of the player
+	 */
+<span class="nc" id="L179">	public void setName(String name) {this.name = name;}</span>
+
+	/**
+	 * get-Method Swords
+	 * @return swords
+	 */
+<span class="nc" id="L185">	public int getSwords() {return swords;}</span>
+
+	/**
+	 * set-Method Swords
+	 * @param swords swords
+	 */
+<span class="nc" id="L191">	public void setSwords(int swords) {this.swords = swords;}</span>
+
+	/**
+	 * get-Method Did Expedition
+	 * @return didExp
+	 */
+<span class="nc" id="L197">	public boolean getDidExp() {return didExp;}</span>
+
+	/**
+	 * set-Method Did Expedition
+	 * @param didExp did Expedition
+	 */
+<span class="nc" id="L203">	public void setDidExp(boolean didExp) {this.didExp = didExp;}</span>
+
+	/**
+	 * get-Method VictoryPoints
+	 * @return victoryPoints
+	 */
+<span class="nc" id="L209">	public int getVictoryPoints() {return victoryPoints;}</span>
+
+	/**
+	 * set-Method VictoryPoints
+	 * @param victoryPoints victoryPoints
+	 */
+<span class="nc" id="L215">	public void setVictoryPoints(int victoryPoints) {this.victoryPoints = victoryPoints;}</span>
+
+	/**
+	 * get-Method TraderBonus
+	 * @return traderBonus
+	 */
+<span class="nc" id="L221">	public int[] getTraderBonus() {return traderBonus;}</span>
+
+	/**
+	 * set-Method Trader Bonus
+	 * @param traderBonus traderBonus
+	 */
+<span class="nc" id="L227">	public void setTraderBonus(int[] traderBonus) {this.traderBonus = traderBonus;}</span>
+
+	/**
+	 * get-Method Eligible for Highscore
+	 * @return eligibleForHighscore
+	 */
+<span class="nc" id="L233">	public boolean getEligibleForHighscore() {return eligibleForHighscore;}</span>
+
+	/**
+	 * set-Method Eligible for Highscore
+	 * @param eligibleForHighscore eligible for highscore
+	 */
+<span class="nc" id="L239">	public void setEligibleForHighscore(boolean eligibleForHighscore) {this.eligibleForHighscore = eligibleForHighscore;}</span>
+
+	/**
+	 * get-Method PlayerType
+	 * @return playerType
+	 */
+<span class="nc" id="L245">	public PlayerType getPlayerType() {return playerType;}</span>
+
+	/**
+	 * set-Method Player Type
+	 * @param playerType playerType
+	 */
+<span class="nc" id="L251">	public void setPlayerType(PlayerType playerType) {this.playerType = playerType;}</span>
+
+	/**
+	 * get-Method Non Gold Cards
+	 * @return nonGoldCards
+	 */
+<span class="nc" id="L257">	public ArrayList&lt;Card&gt; getNonGoldCards() {return nonGoldCards;}</span>
+
+	/**
+	 * set-Method Non Gold Cards
+	 * @param nonGoldCards non GoldCards
+	 */
+<span class="nc" id="L263">	public void setNonGoldCards(ArrayList&lt;Card&gt; nonGoldCards) {this.nonGoldCards = nonGoldCards;}</span>
+
+	/**
+	 * get-Method Is Active
+	 * @return isActive
+	 */
+<span class="nc" id="L269">	public boolean getIsActive() {return isActive;}</span>
+
+	/**
+	 * set-Method Is Active
+	 * @param isActive is active
+	 */
+<span class="nc" id="L275">	public void setIsActive(boolean isActive) {this.isActive = isActive;}</span>
+
+	/**
+	 * get-Method Amount of Moves
+	 * @return moveCount
+	 */
+<span class="nc" id="L281">	public int getMoveCount() {return moveCount;}</span>
+
+	/**
+	 * set-Method Amount of Moves
+	 * @param moveCount how often a player has the chance to pull a Card
+	 */
+<span class="nc" id="L287">	public void setMoveCount(int moveCount) {this.moveCount = moveCount;}</span>
+
+	/**
+	 * get-Method Gold Cards
+	 * @return goldCards
+	 */
+<span class="nc" id="L293">	public ArrayList&lt;Card&gt; getGoldCards() {return goldCards;}</span>
+
+	/**
+	 * set-Method Gold Cards
+	 * @param goldCards GoldCards
+	 */
+<span class="nc" id="L299">	public void setGoldCards(ArrayList&lt;Card&gt; goldCards) {this.goldCards = goldCards;}</span>
+
+	/**
+	 * get Coins, based on the goldCards in the Hands
+	 * @return int coins
+	 */
+	public int getCoins(){
+<span class="nc" id="L306">		return  goldCards.size();</span>
+	}
+
+	/**
+	 * get-Method playerHelp
+	 * @return the playerHelp object
+	 */
+	public PlayerHelp getPlayerHelp() {
+<span class="nc" id="L314">		return playerHelp;</span>
+	}
+
+	/**
+	 * set-Method playerHelp
+	 * @param playerHelp the playerHelp object
+	 */
+	public void setPlayerHelp(PlayerHelp playerHelp) {
+<span class="nc" id="L322">		this.playerHelp = playerHelp;</span>
+<span class="nc" id="L323">	}</span>
+
+	/**
+	 * id of the profile pic of the player
+	 * @return the reference of the id.
+	 */
+	public int getAvatarID() {
+<span class="nc" id="L330">		return avatarID;</span>
+	}
+
+	/**
+	 * set the avatarID of the players profile
+	 * @param avatarID int avatar id
+	 */
+	public void setAvatarID(int avatarID) {
+<span class="nc" id="L338">		this.avatarID = avatarID;</span>
+<span class="nc" id="L339">	}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,120 @@
+Card Title,Variant,Coins
+Pinnace,2 Sword,2
+Frigate,6 Sword,3
+Frigate,1 Sword,1
+Flute,1 Sword,2
+Tax Increase,Max Sword,1
+Pirate,3 VP,9
+Sailor,2 VP,5
+Settler,1 VP,4
+Skiff,1 Sword,1
+Flute,2 Sword,2
+Skiff,5 Sword,3
+Priest,1 VP,4
+Flute,5 Sword,3
+Pinnace,1 Sword,2
+Frigate,3 Sword,2
+Trader,Black + 1 VP,3
+Captain,1 VP,4
+Governor,0 VP,8
+Galleon,2 Sword,1
+Pinnace,4 Sword,4
+Pinnace,4 Sword,3
+Mademoiselle,2 VP,7
+Skiff,3 Sword,3
+Trader,Black + 1 VP,3
+Priest,1 VP,4
+Flute,1 Sword,1
+Admiral,3 VP,9
+Governor,0 VP,8
+Priest,1 VP,4
+Flute,1 Sword,1
+Mademoiselle,2 VP,7
+Tax Increase,Min VP,1
+Admiral,2 VP,7
+Flute,2 Sword,3
+Sailor,1 VP,3
+Galleon,4 Sword,2
+Pirate,2 VP,7
+Jester,2 VP,7
+Trader,Red + 1 VP,3
+Sailor,3 VP,7
+Galleon,Pirate,4
+Flute,1 Sword,1
+Pinnace,2 Sword,3
+Expedition,Anchor Pair + House,3
+Trader,Blue + 1 VP,3
+Expedition,Anchor Pair,2
+Galleon,4 Sword,2
+Sailor,1 VP,3
+Pinnace,1 Sword,1
+Trader,Yellow + 2 VP,5
+Frigate,6 Sword,3
+Frigate,Pirate,3
+Skiff,1 Sword,1
+Frigate,Pirate,4
+Captain,1 VP,4
+Galleon,4 Sword,2
+Sailor,1 VP,3
+Pinnace,1 Sword,1
+Flute,2 Sword,2
+Trader,Red + 1 VP,3
+Settler,1 VP,4
+Captain,1 VP,4
+Frigate,1 Sword,1
+Skiff,3 Sword,2
+Galleon,2 Sword,1
+Admiral,1 VP,5
+Trader,Green + 1 VP,3
+Jack of All Trades,1 VP,6
+Jester,2 VP,7
+Admiral,2 VP,7
+Settler,1 VP,4
+Governor,0 VP,8
+Galleon,7 Sword,3
+Skiff,5 Sword,3
+Mademoiselle,3 VP,9
+Trader,Green + 1 VP,3
+Pinnace,2 Sword,2
+Mademoiselle,3 VP,9
+Sailor,1 VP,3
+Pirate,1 VP,5
+Skiff,3 Sword,2
+Sailor,1 VP,3
+Galleon,Pirate,3
+Expedition,House Pair,2
+Pinnace,4 Sword,3
+Settler,1 VP,4
+Frigate,1 Sword,1
+Sailor,1 VP,3
+Jester,3 VP,9
+Skiff,1 Sword,2
+Priest,1 VP,4
+Captain,1 VP,4
+Captain,1 VP,4
+Trader,Yellow + 1 VP,3
+Flute,5 Sword,4
+Sailor,1 VP,3
+Tax Increase,Min VP,1
+Jack of All Trades,1 VP,6
+Governor,0 VP,8
+Priest,1 VP,4
+Skiff,1 Sword,1
+Galleon,7 Sword,3
+Skiff,5 Sword,4
+Admiral,2 VP,7
+Trader,Blue + 2 VP,5
+Jester,1 VP,5
+Tax Increase,Max Sword,1
+Frigate,3 Sword,2
+Admiral,3 VP,9
+Settler,1 VP,4
+Jack of All Trades,1 VP,6
+Expedition,Cross Pair + House,3
+Sailor,2 VP,5
+Expedition,Cross Pair,2
+Pinnace,1 Sword,1
+Flute,5 Sword,3
+Jester,2 VP,7
+Galleon,2 Sword,1
+Frigate,3 Sword,2

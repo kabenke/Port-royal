@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Turn.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Turn.java</span></div><h1>Turn.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Stack;
+
+/**
+ * This class represents a Turn in a Match.
+ */
+
+public class Turn implements Serializable {
+
+	/**
+	 * Array list of all cards displayed on the harbor
+	 */
+	private ArrayList&lt;Card&gt; harbourDisplay;
+
+	/**
+	 * The player who is doing the turn
+	 */
+	private Player activePlayer;
+
+	/**
+	 * The player who is acting
+	 */
+	private Player actingPlayer;
+
+	/**
+	 * Previous moves
+	 */
+	private Stack&lt;Move&gt; undoHistory;
+
+	/**
+	 * boolean whether the turn is in the first phase
+	 */
+	private boolean phaseDiscover;
+
+	/**
+	 * the amount of moves for each player
+	 */
+	private int[] playerMoveNumber;
+
+	/**
+	 * match that the turn is made in
+	 */
+	private Match match;
+
+	/**
+	 * ArrayList with all moves that are done in this turn
+	 */
+	private ArrayList&lt;Move&gt; moves;
+
+	/**
+	 * allCards (might be redundant)
+	 */
+	private AllCards allCards;
+
+	/**
+	 * ArrayList with all players
+	 */
+	private ArrayList&lt;Player&gt; playerList;
+
+	/**
+	 * helping object to avoid god class
+	 */
+	private TurnHelp turnHelp;
+
+	/**
+	 * Constructor that creates a new Turn object for an activePlayer and passive players
+	 * @param playerList all players (aktiv and passiv)
+	 * @param activePlayer the active player
+	 * @param match the match we are in
+	 */
+<span class="nc" id="L74">	public Turn(ArrayList&lt;Player&gt; playerList, Player activePlayer, Match match) {</span>
+<span class="nc" id="L75">		this.playerList = playerList;</span>
+<span class="nc" id="L76">		this.activePlayer = activePlayer;</span>
+<span class="nc" id="L77">		this.moves = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L78">		this.match = match;</span>
+<span class="nc" id="L79">		this.playerMoveNumber = new int[playerList.size()];</span>
+<span class="nc" id="L80">		this.phaseDiscover = true;</span>
+<span class="nc" id="L81">		this.undoHistory = new Stack&lt;&gt;();</span>
+<span class="nc" id="L82">		this.harbourDisplay = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L83">		this.turnHelp = new TurnHelp(this);</span>
+<span class="nc" id="L84">		this.actingPlayer = activePlayer;</span>
+<span class="nc" id="L85">	}</span>
+
+	/**
+	 * moves a card from the harbourDisplay to the given players hand
+	 * @param player the given player
+	 * @param card the card to be removed from the display
+	 */
+	public void cardToHand(Player player, Card card) {
+<span class="nc bnc" id="L93" title="All 4 branches missed.">		if(player == null || card == null) {</span>
+<span class="nc" id="L94">			throw new IllegalArgumentException(&quot;arguments cant be null&quot;);</span>
+		}
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		if(!this.harbourDisplay.contains(card)) {</span>
+<span class="nc" id="L97">			throw  new IllegalArgumentException(&quot;card isn't in the harbourDisplay&quot;);</span>
+		}
+<span class="nc" id="L99">		this.harbourDisplay.remove(card);</span>
+<span class="nc" id="L100">		player.addCard(card);</span>
+<span class="nc" id="L101">	}</span>
+
+	/**
+	 * adds a given card to the harbourDisplay of the turn
+	 * @param card the card to be added to the harbourDisplay
+	 */
+	public void addToHarborDisplay(Card card) {
+<span class="nc bnc" id="L108" title="All 2 branches missed.">		if(card == null) {</span>
+<span class="nc" id="L109">			throw new IllegalArgumentException(&quot;card cant be null&quot;);</span>
+		}
+<span class="nc" id="L111">		card.flip();</span>
+<span class="nc" id="L112">		this.harbourDisplay.add(card);</span>
+<span class="nc" id="L113">	}</span>
+
+	/**
+	 * changes the phase of the turn
+	 */
+	public void changePhase() {
+<span class="nc bnc" id="L119" title="All 2 branches missed.">		this.phaseDiscover = !this.phaseDiscover;</span>
+<span class="nc" id="L120">	}</span>
+
+	/**
+	 * returns an object, that represents the current state of this Turn object
+	 * @return an object, that represents the current state of this Turn object
+	 */
+	public Turn clone() {
+<span class="nc" id="L127">		ArrayList&lt;Card&gt; clonedHarbourDisplay = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L128">		ArrayList&lt;Player&gt; clonedPlayerList = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L129">		ArrayList&lt;Move&gt; clonedMoves = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L130">		Stack&lt;Move&gt; clonedUndoHistory = new Stack&lt;&gt;();</span>
+
+<span class="nc bnc" id="L132" title="All 2 branches missed.">		for(Player player : playerList) {</span>
+<span class="nc" id="L133">			clonedPlayerList.add(player.clone());</span>
+<span class="nc" id="L134">		}</span>
+
+<span class="nc" id="L136">		Turn clonedTurn = new Turn(clonedPlayerList, this.activePlayer.clone(), this.match);</span>
+
+<span class="nc bnc" id="L138" title="All 2 branches missed.">		for(Card card : harbourDisplay) {</span>
+<span class="nc" id="L139">			clonedHarbourDisplay.add(card.clone());</span>
+<span class="nc" id="L140">		}</span>
+<span class="nc" id="L141">		clonedTurn.setHarbourDisplay(clonedHarbourDisplay);</span>
+
+<span class="nc bnc" id="L143" title="All 2 branches missed.">		for(Move move : moves) {</span>
+<span class="nc" id="L144">			clonedMoves.add(new Move(move.getPlayer(), move.getCard(), move.getPlayerIsActive(), move.getMatchBeforeMove().clone()));</span>
+<span class="nc" id="L145">		}</span>
+<span class="nc" id="L146">		clonedTurn.setMoves(clonedMoves);</span>
+
+<span class="nc" id="L148">		clonedTurn.setIsPhaseDiscover(this.phaseDiscover);</span>
+
+<span class="nc" id="L150">		int[] clonedPlayerMoveNumber = new int[playerMoveNumber.length];</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">		for(int i = 0; i &lt; playerMoveNumber.length; i++) {</span>
+<span class="nc" id="L152">			clonedPlayerMoveNumber[i] = playerMoveNumber[i];</span>
+		}
+<span class="nc" id="L154">		clonedTurn.setPlayerMoveNumber(clonedPlayerMoveNumber);</span>
+
+<span class="nc bnc" id="L156" title="All 2 branches missed.">		for(Move move : undoHistory) {</span>
+<span class="nc" id="L157">			clonedUndoHistory.push(new Move(move.getPlayer(), move.getCard(), move.getPlayerIsActive(), move.getMatchBeforeMove().clone()));</span>
+<span class="nc" id="L158">		}</span>
+<span class="nc" id="L159">		clonedTurn.setUndoHistory(clonedUndoHistory);</span>
+
+<span class="nc" id="L161">		clonedTurn.setTurnHelp(new TurnHelp(clonedTurn));</span>
+
+<span class="nc" id="L163">		return clonedTurn;</span>
+	}
+
+	/**
+	 * adds a move for a given player and card to the move list
+	 * @param player the given player that makes the move
+	 * @param card the card the player chose for the move
+	 */
+	public void addMove(Player player, Card card) {
+<span class="nc bnc" id="L172" title="All 4 branches missed.">		if(player == null || card == null) {</span>
+<span class="nc" id="L173">			throw new IllegalArgumentException(&quot;the arguments cant be null&quot;);</span>
+		}
+<span class="nc bnc" id="L175" title="All 4 branches missed.">		if(playerList.contains(player) &amp;&amp; harbourDisplay.contains(card)) {</span>
+<span class="nc" id="L176">			this.moves.add(new Move(player, card, player.equals(activePlayer), this.match.clone()));</span>
+		} else {
+<span class="nc" id="L178">			throw new IllegalArgumentException(&quot;the player or the card are not legal&quot;);</span>
+		}
+<span class="nc" id="L180">	}</span>
+
+	/**
+	 * get-Method harbourDisplay
+	 * @return the ArrayList that represents the harbourDisplay
+	 */
+	public ArrayList&lt;Card&gt; getHarbourDisplay() {
+<span class="nc" id="L187">		return harbourDisplay;</span>
+	}
+
+	/**
+	 * set-Method harbourDisplay
+	 * @param harbourDisplay the ArrayList that represents the harbourDisplay
+	 */
+	public void setHarbourDisplay(ArrayList&lt;Card&gt; harbourDisplay) {
+<span class="nc" id="L195">		this.harbourDisplay = harbourDisplay;</span>
+<span class="nc" id="L196">	}</span>
+
+	/**
+	 * get-Method activePlayer
+	 * @return the object that represents the activePlayer
+	 */
+	public Player getActivePlayer() {
+<span class="nc" id="L203">		return activePlayer;</span>
+	}
+
+	/**
+	 * set-Method activePlayer
+	 * @param activePlayer the object that represents the activePlayer
+	 */
+	public void setActivePlayer(Player activePlayer) {
+<span class="nc" id="L211">		this.activePlayer = activePlayer;</span>
+<span class="nc" id="L212">	}</span>
+
+	/**
+	 * get-Method undoHistory
+	 * @return the stack that contains the undoHistory
+	 */
+	public Stack&lt;Move&gt; getUndoHistory() {
+<span class="nc" id="L219">		return undoHistory;</span>
+	}
+
+	/**
+	 * set-Method undoHistory
+	 * @param undoHistory the stack that contains the undoHistory
+	 */
+	public void setUndoHistory(Stack&lt;Move&gt; undoHistory) {
+<span class="nc" id="L227">		this.undoHistory = undoHistory;</span>
+<span class="nc" id="L228">	}</span>
+
+	/**
+	 * get-Method phaseDiscover
+	 * @return the value of the boolean phaseDiscover
+	 */
+	public boolean getIsPhaseDiscover() {
+<span class="nc" id="L235">		return phaseDiscover;</span>
+	}
+
+	/**
+	 * set-Method phaseDiscover
+	 * @param phaseDiscover the value to set phaseDiscover to
+	 */
+	public void setIsPhaseDiscover(boolean phaseDiscover) {
+<span class="nc" id="L243">		this.phaseDiscover = phaseDiscover;</span>
+<span class="nc" id="L244">	}</span>
+
+	/**
+	 * get-Method playerMoveNumber
+	 * @return the int-array that contains the player move numbers
+	 */
+	public int[] getPlayerMoveNumber() {
+<span class="nc" id="L251">		return playerMoveNumber;</span>
+	}
+
+	/**
+	 * set-Method playerMoveNumber
+	 * @param playerMoveNumber the int-array that contains the player move numbers
+	 */
+	public void setPlayerMoveNumber(int[] playerMoveNumber) {
+<span class="nc" id="L259">		this.playerMoveNumber = playerMoveNumber;</span>
+<span class="nc" id="L260">	}</span>
+
+	/**
+	 * get-Method match
+	 * @return the Match object that the turn is being played in
+	 */
+	public Match getMatch() {
+<span class="nc" id="L267">		return match;</span>
+	}
+
+	/**
+	 * set-Method match
+	 * @param match the Match object that the turn is being played in
+	 */
+	public void setMatch(Match match) {
+<span class="nc" id="L275">		this.match = match;</span>
+<span class="nc" id="L276">	}</span>
+
+	/**
+	 * get-Method moves
+	 * @return the ArrayList that contains all moves
+	 */
+	public ArrayList&lt;Move&gt; getMoves() {
+<span class="nc" id="L283">		return moves;</span>
+	}
+
+	/**
+	 * set-Method moves
+	 * @param moves the ArrayList that contains all moves
+	 */
+	public void setMoves(ArrayList&lt;Move&gt; moves) {
+<span class="nc" id="L291">		this.moves = moves;</span>
+<span class="nc" id="L292">	}</span>
+
+	/**
+	 * get-Method allCards
+	 * @return allCards object
+	 */
+	public AllCards getAllCards() {
+<span class="nc" id="L299">		return allCards;</span>
+	}
+
+	/**
+	 * set-Method allCards
+	 * @param allCards an allCards object
+	 */
+	public void setAllCards(AllCards allCards) {
+<span class="nc" id="L307">		this.allCards = allCards;</span>
+<span class="nc" id="L308">	}</span>
+
+	/**
+	 * get-Method playerList
+	 * @return the ArrayList that contains all players
+	 */
+	public ArrayList&lt;Player&gt; getPlayerList() {
+<span class="nc" id="L315">		return playerList;</span>
+	}
+
+	/**
+	 * set-Method playerList
+	 * @param playerList the ArrayList that contains all players
+	 */
+	public void setPlayerList(ArrayList&lt;Player&gt; playerList) {
+<span class="nc" id="L323">		this.playerList = playerList;</span>
+<span class="nc" id="L324">	}</span>
+
+	/**
+	 * get-Method turnHelp
+	 * @return the helping TurnHelp object
+	 */
+	public TurnHelp getTurnHelp() {
+<span class="nc" id="L331">		return turnHelp;</span>
+	}
+
+	/**
+	 * set-Method turnHelp
+	 * @param turnHelp the helping turnHelp object
+	 */
+	public void setTurnHelp(TurnHelp turnHelp) {
+<span class="nc" id="L339">		this.turnHelp = turnHelp;</span>
+<span class="nc" id="L340">	}</span>
+
+	/**
+	 * get-Method actingPlayer
+	 * @return returns the acting Player
+	 */
+	public Player getActingPlayer(){
+<span class="nc" id="L347">		return actingPlayer;</span>
+	}
+
+	/**
+	 * set-Method actingPlayer
+	 * @param actingPlayer the acting Player
+	 */
+	public void setActingPlayer(Player actingPlayer){
+<span class="nc" id="L355">		this.actingPlayer = actingPlayer;</span>
+<span class="nc" id="L356">	}</span>
+
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

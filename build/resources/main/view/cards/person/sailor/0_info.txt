@@ -1,0 +1,2 @@
+file name format:
+coins_victoryPoints

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UndoRedoController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">UndoRedoController.java</span></div><h1>UndoRedoController.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.Match;
+import model.Player;
+import model.Turn;
+import model.Move;
+
+import java.util.ArrayList;
+
+/**
+ * This class is used to manage the UndoRedo functions of the game.
+ */
+public class UndoRedoController {
+
+	/**
+	 * The MainController
+	 */
+	private MainController mainController;
+
+	/**
+	 * The UndoRedoController
+	 * @param mainController mainController
+	 */
+<span class="fc" id="L24">	public UndoRedoController(MainController mainController) {</span>
+<span class="fc" id="L25">		this.mainController = mainController;</span>
+<span class="fc" id="L26">	}</span>
+
+	/**
+	 * Method to undo a turn
+	 * @param match - current match
+	 */
+	public void undo(Match match) {
+<span class="nc bnc" id="L33" title="All 2 branches missed.">		if(match.getActiveTurn().getMoves().size() == 0) {</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">			if (match.getTurnHistory().size() &gt; 0) {</span>
+<span class="nc" id="L35">				Turn turn = match.getTurnHistory().get(match.getTurnHistory().size() - 1);</span>
+<span class="nc" id="L36">				match.getUndoTurnHistory().push(turn);</span>
+<span class="nc" id="L37">				match.getTurnHistory().remove(turn);</span>
+<span class="nc" id="L38">			}else {</span>
+<span class="nc" id="L39">				throw new IllegalArgumentException(&quot;The turn can't be undone.&quot;);</span>
+			}
+		}
+<span class="nc" id="L42">		undoMove(match.getActiveTurn());</span>
+<span class="nc" id="L43">	}</span>
+
+	/**
+	 * This method is used to redo a turn of a match
+	 * @param match the match in that we want to redo something
+	 */
+	public void redo(Match match) {
+<span class="nc bnc" id="L50" title="All 2 branches missed.">		if(match.getActiveTurn().getUndoHistory().size() == 0){</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">			if(match.getUndoTurnHistory().size() &gt; 0){</span>
+<span class="nc" id="L52">				Turn turn = match.getUndoTurnHistory().pop();</span>
+<span class="nc" id="L53">				match.getTurnHistory().add(turn);</span>
+			}
+<span class="nc" id="L55">			throw new IllegalArgumentException(&quot;No more turns to redo!&quot;);</span>
+		}
+<span class="nc" id="L57">		redoMove(match.getActiveTurn());</span>
+<span class="nc" id="L58">	}</span>
+
+
+	private void undoMove(Turn turn) throws IllegalArgumentException {
+<span class="nc bnc" id="L62" title="All 2 branches missed.">		if(turn.getMoves().size()==0){</span>
+<span class="nc" id="L63">			throw  new IllegalArgumentException(&quot;no Move to remove&quot;);</span>
+		}
+<span class="nc" id="L65">		Move move=turn.getMoves().get(turn.getMoves().size()-1);</span>
+<span class="nc" id="L66">		turn.getUndoHistory().push(move);</span>
+<span class="nc" id="L67">		turn.getMoves().remove(move);</span>
+
+<span class="nc" id="L69">	}</span>
+
+	/**
+	 * This method is used to redo a move in a turn
+	 * @param turn the turn in which we want to redo a move
+	 */
+	private void redoMove(Turn turn) {
+<span class="nc bnc" id="L76" title="All 2 branches missed.">		 if (turn.getUndoHistory().size() == 0)</span>
+		 {
+<span class="nc" id="L78">			throw new IllegalArgumentException(&quot;The moves history for this turn is empty&quot;);</span>
+		 }
+		 else
+		 {
+<span class="nc" id="L82">		 	Move move = turn.getUndoHistory().pop();</span>
+<span class="nc" id="L83">		 	turn.getMoves().add(move);</span>
+		 }
+<span class="nc" id="L85">	}</span>
+
+	/**
+	 * get-Method mainController
+	 * @return the mainController
+	 */
+<span class="nc" id="L91">	public MainController getMainController() { return mainController; }</span>
+
+	/**
+	 * set-Method mainController
+	 * @param mainController the mainController
+	 */
+<span class="nc" id="L97">	public void setMainController(MainController mainController) { this.mainController = mainController; }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

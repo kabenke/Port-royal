@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Person.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">Person.java</span></div><h1>Person.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+
+/**
+ * This class represents a person card in the game.
+ */
+
+public class Person extends Card implements Serializable {
+
+	/**
+	 * The swords on a Person card
+	 */
+	private int swords;
+
+	/**
+	 * The ability of a Person card
+	 */
+	private Ability ability;
+
+	/**
+	 * The victoryPoints of a Person card
+	 */
+	private int victoryPoints;
+
+	/**
+	 * The color of a Person card
+	 */
+	private Color color;
+
+	/**
+	 * Constructor for the Person
+	 * @param coins the coin costs
+	 * @param swords the swords if it is a
+	 * @param ability the artifacts
+	 * @param victoryPoints if necessary a comment
+	 * @param color color of ships or trader
+	 */
+<span class="fc" id="L39">	public Person(int coins, int swords, Ability ability, int victoryPoints, Color color) {</span>
+<span class="fc" id="L40">			this.coins = coins;</span>
+<span class="fc" id="L41">			this.swords = swords;</span>
+<span class="fc" id="L42">			this.ability = ability;</span>
+<span class="fc" id="L43">			this.victoryPoints = victoryPoints;</span>
+<span class="fc" id="L44">			this.color = color;</span>
+<span class="fc" id="L45">			this.isFaceUp = false;</span>
+<span class="fc" id="L46">	}</span>
+
+	/**
+	 * checks if a player can afford new cards
+	 * @param player gives the player to check
+	 * @return gives true for he can Afford
+	 */
+	public boolean canAfford(Player player)throws IllegalArgumentException {
+
+<span class="nc bnc" id="L55" title="All 2 branches missed.">		if(player == null){</span>
+<span class="nc" id="L56">			throw new IllegalArgumentException();</span>
+		}
+
+<span class="nc bnc" id="L59" title="All 2 branches missed.">		if(player.isActive){</span>
+<span class="nc bnc" id="L60" title="All 2 branches missed.">			return player.getGoldCards().size()&gt;= coins;</span>
+		}
+<span class="nc bnc" id="L62" title="All 2 branches missed.">		return player.getGoldCards().size() &gt; coins;</span>
+	}
+
+	/**
+	 * Clone method for a Person card
+	 * @return clone the Person for the history
+	 */
+	public Person clone() {
+<span class="nc" id="L70">		Person person = new Person(	this.coins, this.swords, this.ability ,this.victoryPoints, this.color);</span>
+<span class="nc" id="L71">		person.isFaceUp = this.isFaceUp;</span>
+<span class="nc" id="L72">		return person;</span>
+	}
+
+
+	/**
+	 * gives access to the ability of the card
+	 * @return the ability of the Person
+	 */
+	public Ability getAbility(){
+<span class="nc" id="L81">		return ability;</span>
+	}
+
+	/**
+	 * can set the ability
+	 * @param ability new ability
+	 */
+	public void setAbility(Ability ability){
+<span class="nc" id="L89">		this.ability = ability;</span>
+<span class="nc" id="L90">	}</span>
+
+	/**
+	 * Get-Method for the swords of a Person
+	 * @return swards
+	 */
+<span class="nc" id="L96">	public int getSwords() {return swords; }</span>
+
+	/**
+	 * Get-Method for the VictoryPoints of a Person
+	 * @return victoryPoints
+	 */
+<span class="nc" id="L102">	public int getVictoryPoints(){return  victoryPoints;}</span>
+
+	/**
+	 * Set-Method for the swords of a Person
+	 * @param swords to setSwords
+	 */
+	public void setSwords(int swords) {
+<span class="nc" id="L109">		this.swords = swords;</span>
+<span class="nc" id="L110">	}</span>
+
+	/**
+	 * Set-Method for the VictoryPoints of a Person
+	 * @param victoryPoints access to victory Points of the Person
+	 */
+	public void setVictoryPoints(int victoryPoints) {
+<span class="nc" id="L117">		this.victoryPoints = victoryPoints;</span>
+<span class="nc" id="L118">	}</span>
+
+	/**
+	 * Get-Method for the color of a Person
+	 * @return the color of a person(trader)
+	 */
+	public Color getColor() {
+<span class="nc" id="L125">		return color;</span>
+	}
+
+	/**
+	 * Set-Method for the color of a Person
+ 	 * @param color set the color of a person(trader)
+	 */
+	public void setColor(Color color) {
+<span class="nc" id="L133">		this.color = color;</span>
+<span class="nc" id="L134">	}</span>
+
+	/**
+	 * Converts a Person card to a String
+	 * @return returns the card as a String
+	 */
+	@Override
+	public String toString(){
+<span class="nc" id="L142">		String str = getAbility()+&quot;: &quot;+getCoins()+&quot;C &quot;+getVictoryPoints()+&quot;V &quot;;</span>
+<span class="nc bnc" id="L143" title="All 4 branches missed.">		if(getAbility().equals(Ability.PIRATE) || getAbility().equals(Ability.SAILOR)){</span>
+<span class="nc" id="L144">			str += getSwords()+&quot;S &quot;;</span>
+		}
+<span class="nc bnc" id="L146" title="All 2 branches missed.">		if(!getColor().equals(Color.UNDEFINED)){</span>
+<span class="nc" id="L147">			str += getColor();</span>
+		}
+<span class="nc" id="L149">		return str;</span>
+	}
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

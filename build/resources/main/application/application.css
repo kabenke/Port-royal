@@ -1,0 +1,20 @@
+/* JavaFX CSS - Leave this comment until you have at least created one rule which uses -fx-Property */
+
+#pane {
+    -fx-background-image: url('/view/images/pirate_map.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+.playerNameField {
+    -fx-background-color: -fx-text-box-border, -fx-background ;
+    -fx-background-insets: 0, 0, 0, 1, 0 ;
+    -fx-background-radius: 0 ;
+    -fx-background-color: transparent ;
+}
+
+.playerNameField:focused {
+    -fx-background-color: -fx-focus-color, -fx-background ;
+    -fx-background-color: transparent ;
+}

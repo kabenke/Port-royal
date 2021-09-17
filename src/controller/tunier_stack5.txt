@@ -1,0 +1,120 @@
+Card Title,Variant,Coins
+Priest,1 VP,4
+Skiff,1 Sword,1
+Frigate,1 Sword,1
+Pirate,3 VP,9
+Flute,2 Sword,2
+Pinnace,4 Sword,3
+Flute,1 Sword,1
+Galleon,4 Sword,2
+Trader,Black + 1 VP,3
+Trader,Red + 1 VP,3
+Tax Increase,Max Sword,1
+Sailor,2 VP,5
+Flute,5 Sword,3
+Settler,1 VP,4
+Mademoiselle,2 VP,7
+Frigate,6 Sword,3
+Trader,Blue + 2 VP,5
+Priest,1 VP,4
+Frigate,3 Sword,2
+Pinnace,1 Sword,1
+Jester,3 VP,9
+Settler,1 VP,4
+Tax Increase,Min VP,1
+Frigate,Pirate,3
+Jack of All Trades,1 VP,6
+Frigate,1 Sword,1
+Pinnace,4 Sword,4
+Sailor,1 VP,3
+Jester,2 VP,7
+Pinnace,4 Sword,3
+Skiff,5 Sword,4
+Galleon,2 Sword,1
+Frigate,6 Sword,3
+Pinnace,2 Sword,2
+Skiff,5 Sword,3
+Trader,Blue + 1 VP,3
+Pirate,1 VP,5
+Galleon,4 Sword,2
+Pirate,2 VP,7
+Tax Increase,Max Sword,1
+Galleon,2 Sword,1
+Flute,1 Sword,1
+Skiff,3 Sword,2
+Frigate,3 Sword,2
+Jester,1 VP,5
+Frigate,Pirate,4
+Sailor,1 VP,3
+Flute,5 Sword,3
+Trader,Yellow + 2 VP,5
+Flute,5 Sword,4
+Governor,0 VP,8
+Settler,1 VP,4
+Admiral,3 VP,9
+Flute,2 Sword,3
+Sailor,1 VP,3
+Trader,Yellow + 1 VP,3
+Expedition,Cross Pair,2
+Jack of All Trades,1 VP,6
+Flute,2 Sword,2
+Pinnace,1 Sword,1
+Governor,0 VP,8
+Governor,0 VP,8
+Galleon,Pirate,4
+Pinnace,1 Sword,1
+Sailor,1 VP,3
+Mademoiselle,3 VP,9
+Captain,1 VP,4
+Admiral,2 VP,7
+Expedition,Anchor Pair + House,3
+Galleon,2 Sword,1
+Pinnace,2 Sword,2
+Sailor,1 VP,3
+Jester,2 VP,7
+Admiral,2 VP,7
+Priest,1 VP,4
+Frigate,1 Sword,1
+Skiff,5 Sword,3
+Governor,0 VP,8
+Admiral,2 VP,7
+Expedition,Anchor Pair,2
+Mademoiselle,3 VP,9
+Captain,1 VP,4
+Tax Increase,Min VP,1
+Settler,1 VP,4
+Priest,1 VP,4
+Captain,1 VP,4
+Priest,1 VP,4
+Galleon,Pirate,3
+Sailor,3 VP,7
+Galleon,7 Sword,3
+Skiff,3 Sword,2
+Expedition,House Pair,2
+Trader,Green + 1 VP,3
+Jack of All Trades,1 VP,6
+Galleon,7 Sword,3
+Trader,Red + 1 VP,3
+Trader,Black + 1 VP,3
+Pinnace,2 Sword,3
+Jester,2 VP,7
+Sailor,2 VP,5
+Skiff,1 Sword,2
+Flute,1 Sword,1
+Admiral,3 VP,9
+Galleon,4 Sword,2
+Captain,1 VP,4
+Pinnace,1 Sword,2
+Settler,1 VP,4
+Mademoiselle,2 VP,7
+Sailor,1 VP,3
+Frigate,3 Sword,2
+Skiff,1 Sword,1
+Skiff,3 Sword,3
+Trader,Green + 1 VP,3
+Captain,1 VP,4
+Flute,1 Sword,2
+Skiff,1 Sword,1
+Admiral,1 VP,5
+Sailor,1 VP,3
+Expedition,Cross Pair + House,3

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TaxRaise.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">model</a> &gt; <span class="el_source">TaxRaise.java</span></div><h1>TaxRaise.java</h1><pre class="source lang-java linenums">package model;
+
+import java.io.Serializable;
+
+/**
+ * This class represents a TaxRaise card in the game.
+ */
+public class TaxRaise extends Card implements Serializable {
+
+	/**
+	 * boolean if the TaxRaise has maxSwords on it or minVP
+	 */
+	private boolean maxSwords;
+
+	/**
+	 * create a new object of the TaxRaise card
+	 * @param maxSwords to differentiate between the maxSwords and min victoryPoints
+	 */
+<span class="fc" id="L19">	public TaxRaise(boolean maxSwords) {</span>
+<span class="fc" id="L20">		this.maxSwords = maxSwords;</span>
+<span class="fc" id="L21">		this.isFaceUp = false;</span>
+<span class="fc" id="L22">	}</span>
+
+	/**
+	 * Method to clone a TaxRaise card
+	 * @return return a copy of a TaxRaise Card for the history
+	 */
+	public TaxRaise clone(){
+<span class="nc" id="L29">		TaxRaise taxRaise = new TaxRaise(this.maxSwords);</span>
+<span class="nc" id="L30">		taxRaise.isFaceUp = this.isFaceUp;</span>
+<span class="nc" id="L31">		return  taxRaise;</span>
+	}
+
+	/**
+	 * Set the boolean if the TaxRaise card has maxSwords on it or minVP
+	 * @param maxSwords set the param maxSwords
+	 */
+	public void setMaxSwords(boolean maxSwords) {
+<span class="nc" id="L39">		this.maxSwords = maxSwords;</span>
+<span class="nc" id="L40">	}</span>
+
+	/**
+	 * Get the boolean of the TaxRaise if its maxSwords or minVP
+	 * @return gives access to the maxSwords attribute which define the function of the TaxRaise card
+	 */
+	public boolean getMaxSwords(){
+<span class="nc" id="L47">		return maxSwords;</span>
+	}
+
+	/**
+	 * Converts a TaxRaise card to a String
+	 * @return return the card as a String
+	 */
+	@Override
+	public String toString(){
+<span class="nc" id="L56">		String str = &quot;TAX RAISE: &quot;;</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">		if(maxSwords){ str += &quot;Max Sword&quot;; }</span>
+<span class="nc" id="L58">		else{ str += &quot;Min VP&quot;; }</span>
+<span class="nc" id="L59">		return str;</span>
+	}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

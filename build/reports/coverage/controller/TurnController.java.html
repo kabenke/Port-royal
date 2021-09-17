@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>TurnController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">TurnController.java</span></div><h1>TurnController.java</h1><pre class="source lang-java linenums">package controller;
+
+import abstractuserinterface.GameAUI;
+import model.*;
+
+import java.util.ArrayList;
+
+/**
+ * Class that provides methods to control the games Turn logic.
+ */
+public class TurnController {
+
+	/**
+	 * The MainController
+	 */
+	private MainController mainController;
+
+	/**
+	 * The GameAUI
+	 */
+	private GameAUI gameAUI;
+
+	/**
+	 * The match in that we want to control the turn logic
+	 */
+	private Match match;
+
+	/**
+	 * The TurnHelp method to assist the TurnController
+	 */
+	private TurnHelp turnHelp;
+
+	/**
+	 * constructor that instantiates attributes
+	 * @param mainController mainController
+	 */
+<span class="fc" id="L37">	public TurnController(MainController mainController) {</span>
+<span class="fc" id="L38">		this.mainController = mainController;</span>
+<span class="fc" id="L39">	}</span>
+
+	/**
+	 * change phase to trade and hire
+	 * @param turn current turn
+	 */
+	public void changePhase(Turn turn) {
+<span class="nc bnc" id="L46" title="All 2 branches missed.">		turn.setIsPhaseDiscover(!turn.getIsPhaseDiscover());</span>
+<span class="nc" id="L47">		turn.getTurnHelp().generateMoveNumber();</span>
+<span class="nc" id="L48">	}</span>
+
+	/**
+	 * add a move to the current Turn
+	 * @param player player how did the move
+	 * @param card card he picks
+	 * @param turn turn to add the move
+	 */
+	public void addMove(Player player, Card card, Turn turn) {
+<span class="nc" id="L57">		turn.addMove(player, card);</span>
+<span class="nc" id="L58">	}</span>
+
+
+	/**
+	 * is used to clear the harbourDisplay by putting all cards on the DiscardPile
+	 * @param turn the turn in which we want to clear the harbourDisplay
+	 */
+	public void clearHarborDisplay(Turn turn) {
+<span class="nc" id="L66">		Match currentMatch = turn.getMatch();</span>
+<span class="nc" id="L67">		ArrayList&lt;Card&gt; harbourDisplay = turn.getHarbourDisplay();</span>
+<span class="nc bnc" id="L68" title="All 2 branches missed.">		if(!turn.getTurnHelp().validHarborDisplay()){</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">			for(Player player : turn.getPlayerList()){</span>
+<span class="nc" id="L70">				ArrayList&lt;Card&gt; cards = player.getNonGoldCards();</span>
+<span class="nc bnc" id="L71" title="All 2 branches missed.">				for(int i = 0; i &lt; cards.size(); i++){</span>
+<span class="nc bnc" id="L72" title="All 4 branches missed.">					if(cards.get(i) instanceof Person &amp;&amp; ((Person) cards.get(i)).getAbility().equals(Ability.JESTER)) {</span>
+<span class="nc" id="L73">						player.getGoldCards().add(match.drawGoldCard());</span>
+					}
+				}
+<span class="nc" id="L76">			}</span>
+		}
+<span class="nc bnc" id="L78" title="All 2 branches missed.">		while(!harbourDisplay.isEmpty()){</span>
+<span class="nc" id="L79">			currentMatch.toDiscardPile(harbourDisplay.remove(0));</span>
+		}
+<span class="nc" id="L81">	}</span>
+
+	/**
+	 * draws a card from the draw pile and adds it to the harbour/expedition display or applies the taxRaise
+	 * @param turn the turn that has the harbourDisplay to add to
+	 */
+	public void drawCardToHarborDisplay(Turn turn) {
+<span class="nc" id="L88">		Match currentMatch = turn.getMatch();</span>
+<span class="nc" id="L89">		getMainController().getMatchController().checkDrawPile(turn.getMatch());</span>
+<span class="nc" id="L90">		currentMatch.drawFromPile(turn);</span>
+<span class="nc" id="L91">		ArrayList&lt;Card&gt; harbourDisplay = turn.getHarbourDisplay();</span>
+<span class="nc" id="L92">		Card drawnCard = harbourDisplay.get(harbourDisplay.size()-1);</span>
+<span class="nc bnc" id="L93" title="All 2 branches missed.">		if(drawnCard instanceof Expedition) {</span>
+<span class="nc" id="L94">			harbourDisplay.remove(harbourDisplay.size()-1);</span>
+<span class="nc" id="L95">			currentMatch.getExpeditionDisplay().add((Expedition) drawnCard);</span>
+<span class="nc bnc" id="L96" title="All 2 branches missed.">		} else if(drawnCard instanceof TaxRaise) {</span>
+<span class="nc" id="L97">			harbourDisplay.remove(harbourDisplay.size()-1);</span>
+<span class="nc" id="L98">			applyTaxRaise((TaxRaise) drawnCard, turn);</span>
+		}
+<span class="nc" id="L100">		turn.getTurnHelp().setLastDrawnCard(drawnCard);</span>
+<span class="nc" id="L101">		getMainController().getMatchController().checkDrawPile(turn.getMatch());</span>
+<span class="nc" id="L102">	}</span>
+
+	/**
+	 * When a TaxRaise card is flipped, all players who have more than 11 Gold Cards should return half of them (under rounded)
+	 ** if MaxSwords = true -&gt; the player/players with the most Swords receive 1 gold
+	 ** if MaxSword = false -&gt; the player/players with the least amount of victory points receive 1 gold
+	 * @param card - a TaxRaise card
+	 * @param turn - a turn in a match
+	 */
+	private void applyTaxRaise(TaxRaise card, Turn turn) {
+
+<span class="nc bnc" id="L113" title="All 2 branches missed.">		for(int i = 0; i &lt; turn.getPlayerList().size(); i++){</span>
+<span class="nc" id="L114">			Player player = turn.getPlayerList().get(i);</span>
+<span class="nc" id="L115">			ArrayList&lt;Card&gt; goldCards = player.getGoldCards();</span>
+<span class="nc" id="L116">			ArrayList&lt;Player&gt; playersMaxSwords = turn.getTurnHelp().maxSwords();</span>
+<span class="nc" id="L117">			ArrayList&lt;Player&gt; playersMinPoints = turn.getTurnHelp().minVictoryPoints();</span>
+<span class="nc" id="L118">			match = getMainController().getPortRoyal().getActiveMatch();</span>
+
+<span class="nc" id="L120">			final int THRESHOLD = 11;</span>
+
+<span class="nc bnc" id="L122" title="All 2 branches missed.">			if(player.getCoins() &gt; THRESHOLD){</span>
+<span class="nc" id="L123">				int toRemove = player.getCoins()/2;</span>
+<span class="nc bnc" id="L124" title="All 2 branches missed.">				while(toRemove &gt; 0){</span>
+<span class="nc" id="L125">					goldCards.get(0).flip();</span>
+<span class="nc" id="L126">					match.toDiscardPile(goldCards.get(0));</span>
+<span class="nc" id="L127">					goldCards.remove(goldCards.get(0));</span>
+<span class="nc" id="L128">					toRemove--;</span>
+				}
+			}
+
+<span class="nc bnc" id="L132" title="All 2 branches missed.">			if(card.getMaxSwords()){</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">				if(playersMaxSwords.contains(player)){</span>
+<span class="nc" id="L134">					getMainController().getMatchController().checkDrawPile(match);</span>
+<span class="nc" id="L135">					player.getGoldCards().add(match.drawGoldCard());</span>
+				}
+			}else{
+<span class="nc bnc" id="L138" title="All 2 branches missed.">				if(playersMinPoints.contains(player)){</span>
+<span class="nc" id="L139">					getMainController().getMatchController().checkDrawPile(match);</span>
+<span class="nc" id="L140">					player.getGoldCards().add(match.drawGoldCard());</span>
+				}
+			}
+		}
+<span class="nc" id="L144">		turn.getMatch().toDiscardPile(card);</span>
+<span class="nc" id="L145">	}</span>
+
+	/**
+	 * Get-Method of the mainController
+	 * @return mainController
+	 */
+<span class="nc" id="L151">	public MainController getMainController() { return mainController; }</span>
+
+	/**
+	 * Set-Method of the mainController
+	 * @param mainController mainController
+	 */
+<span class="nc" id="L157">	public void setMainController(MainController mainController) { this.mainController = mainController; }</span>
+
+	/**
+	 * Get-Method for the GameAUI
+	 * @return gameAUI
+	 */
+<span class="nc" id="L163">	public GameAUI getGameAUI() {return gameAUI;}</span>
+
+	/**
+	 * Set-Method for the GameAUI
+	 * @param gameAUI gameAUI
+	 */
+<span class="nc" id="L169">	public void setGameAUI(GameAUI gameAUI) {this.gameAUI = gameAUI;}</span>
+
+	/**
+	 * Get-Method for the match
+	 * @return match
+	 */
+<span class="nc" id="L175">	public Match getMatch() {return match;}</span>
+
+	/**
+	 * Set-Method for the match
+	 * @param match match
+	 */
+<span class="nc" id="L181">	public void setMatch(Match match) {this.match = match;}</span>
+
+	/**
+	 * Get-Method for the TurnHelp
+	 * @return turnHelp
+	 */
+<span class="nc" id="L187">	public TurnHelp getTurnHelp() {return turnHelp;}</span>
+
+	/**
+	 * Set-Method for the TurnHelp
+	 * @param turnHelp turnHelp
+	 */
+<span class="nc" id="L193">	public void setTurnHelp(TurnHelp turnHelp) {this.turnHelp = turnHelp;}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

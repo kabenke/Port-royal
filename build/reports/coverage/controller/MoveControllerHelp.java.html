@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>MoveControllerHelp.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">MoveControllerHelp.java</span></div><h1>MoveControllerHelp.java</h1><pre class="source lang-java linenums">package controller;
+
+import model.*;
+
+import java.util.ArrayList;
+
+/**
+ * helping class to avoid a god class.
+ */
+public class MoveControllerHelp {
+
+    private MoveController moveController;
+
+    /**
+     * constructor that creates a help object for a moveController
+     * @param moveController the moveController
+     */
+<span class="fc" id="L18">    public MoveControllerHelp(MoveController moveController) {</span>
+<span class="fc" id="L19">        this.moveController = moveController;</span>
+<span class="fc" id="L20">    }</span>
+
+    /**
+     * helpMethod to check can fullfill
+     * @param artifacts the artifact array to check
+     * @param ability the ability to count
+     * @return amount of artifact in abilities
+     */
+    public int countNeededArtifacts (ArrayList&lt;Ability&gt; artifacts, Ability ability){
+<span class="nc" id="L29">        int resultCount = 0;</span>
+<span class="nc bnc" id="L30" title="All 2 branches missed.">        for (int i = 0; i &lt; artifacts.size() ; i++) {</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">            if(artifacts.get(i).equals(ability)) {</span>
+<span class="nc" id="L32">                resultCount++;}</span>
+        }
+<span class="nc" id="L34">        return resultCount;</span>
+    }
+
+    /**
+     * help method for fulfillExpedition
+     * @param playerCards playerCards of the move Player
+     * @param ability ability to count
+     * @return return the number of abilities
+     */
+    public int countGivenArtifacts (ArrayList&lt;Card&gt; playerCards, Ability ability) {
+<span class="nc" id="L44">        int resultCount = 0;</span>
+
+<span class="nc bnc" id="L46" title="All 2 branches missed.">        for(int i=0; i&lt;playerCards.size(); i++) {</span>
+
+<span class="nc" id="L48">            Card card = playerCards.get(i);</span>
+
+<span class="nc bnc" id="L50" title="All 2 branches missed.">            if (card instanceof Person) {</span>
+<span class="nc bnc" id="L51" title="All 2 branches missed.">                if (((Person) card).getAbility().equals(ability)) {</span>
+<span class="nc" id="L52">                    resultCount++;</span>
+                }
+            }
+        }
+<span class="nc" id="L56">        return resultCount;</span>
+    }
+
+    /**
+     * remove the first/ oldest Artifact
+     * @param playerCards ArrayList card
+     * @param artifact artifacts to remove
+     * @return the removed artifact
+     */
+    public Person removeFirstArtifact(ArrayList&lt;Card&gt; playerCards, Ability artifact){
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        for(int i=0; i&lt;playerCards.size(); i++) {</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">            if(playerCards.get(i) instanceof Person){</span>
+<span class="nc" id="L68">                Person person = (Person) playerCards.get(i);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">                if(artifact.equals(person.getAbility())) {</span>
+<span class="nc" id="L70">                    playerCards.remove(i);</span>
+<span class="nc" id="L71">                    return person;</span>
+                }
+            }
+        }
+<span class="nc" id="L75">        throw new IllegalArgumentException(&quot;Artifact nicht gefunden&quot;);</span>
+
+    }
+
+    /**
+     * adjusts the coins of the player, positive means new coins and negative means discardCards
+     * @param player player who get more or less coins
+     * @param coins amount of coins positive is plus, negative minus
+     * @param turn the turn in which we want to adjust the coins
+     */
+    public void adjustCoins(Player player, int coins, Turn turn) {
+<span class="nc bnc" id="L86" title="All 2 branches missed.">        if(coins &lt; 0) {</span>
+<span class="nc bnc" id="L87" title="All 2 branches missed.">            for(int i = 0; i &lt; (-coins); i++) {</span>
+<span class="nc" id="L88">                Card removed = player.getGoldCards().remove(0);</span>
+<span class="nc" id="L89">                removed.flip();</span>
+<span class="nc" id="L90">                turn.getMatch().toDiscardPile(removed);</span>
+            }
+        }
+        else{
+<span class="nc bnc" id="L94" title="All 2 branches missed.">            for(int i = 0; i &lt; coins; i++){</span>
+<span class="nc" id="L95">                moveController.getMainController().getMatchController().checkDrawPile(turn.getMatch());</span>
+<span class="nc" id="L96">                player.addCard(turn.getMatch().drawGoldCard());</span>
+            }
+        }
+<span class="nc" id="L99">    }</span>
+
+    /**
+     * This method checks if the acting player has more moves to sell a ship or hire a Person
+     * @param player the acting player
+     * @param turn the active turn
+     * @return true if the acting player has more moves, false if not
+     */
+    public boolean hasMoreMoves(Player player, Turn turn){
+<span class="nc" id="L108">        int[] playerMoveNumber = turn.getPlayerMoveNumber();</span>
+<span class="nc" id="L109">        ArrayList&lt;Player&gt; playerList = turn.getPlayerList();</span>
+
+<span class="nc" id="L111">        int playerMoves = 0;</span>
+<span class="nc bnc" id="L112" title="All 2 branches missed.">        for(int i = 0; i &lt; playerList.size(); i++){</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">            if(playerList.get(i) == turn.getActingPlayer()){</span>
+<span class="nc" id="L114">                playerMoves = playerMoveNumber[i];</span>
+            }
+        }
+<span class="nc bnc" id="L117" title="All 2 branches missed.">        if(playerMoves &gt; 0){</span>
+<span class="nc" id="L118">            return true;</span>
+        }
+<span class="nc" id="L120">        return false;</span>
+    }
+
+    /**
+     * This method is used to adjust the moveCount of a player after he took a card
+     * @param turn the active turn
+     */
+    public void adjustMoveCount(Turn turn){
+<span class="nc" id="L128">        int[] playerMoveNumber = turn.getPlayerMoveNumber();</span>
+<span class="nc" id="L129">        ArrayList&lt;Player&gt; playerList = turn.getPlayerList();</span>
+
+<span class="nc bnc" id="L131" title="All 2 branches missed.">        for(int i = 0; i &lt; playerList.size(); i++){</span>
+<span class="nc bnc" id="L132" title="All 2 branches missed.">            if(playerList.get(i) == turn.getActingPlayer()){</span>
+<span class="nc" id="L133">                playerMoveNumber[i]--;</span>
+            }
+        }
+<span class="nc" id="L136">    }</span>
+
+    /**
+     * method that removes the artifact cards
+     * @param removeCards ArrayList containing the amounts of cards to remove
+     * @param match the match
+     * @param player the player to remove the cards for
+     */
+    public void removeCards(ArrayList&lt;Integer&gt; removeCards, Match match, Player player) {
+        Person removedSettler, removedPriest, removedCaptain, removedJoker;
+<span class="nc" id="L146">        ArrayList&lt;Card&gt; playerCards = player.getNonGoldCards();</span>
+
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        for (int i = 0; i &lt; removeCards.get(0); i++) {</span>
+<span class="nc" id="L149">            removedSettler = removeFirstArtifact(playerCards, Ability.SETTLER);</span>
+<span class="nc" id="L150">            match.toDiscardPile(removedSettler);</span>
+        }
+<span class="nc bnc" id="L152" title="All 2 branches missed.">        for (int i = 0; i &lt; removeCards.get(1); i++) {</span>
+<span class="nc" id="L153">            removedPriest = removeFirstArtifact(playerCards, Ability.PRIEST);</span>
+<span class="nc" id="L154">            match.toDiscardPile(removedPriest);</span>
+        }
+<span class="nc bnc" id="L156" title="All 2 branches missed.">        for (int i = 0; i &lt; removeCards.get(2); i++) {</span>
+<span class="nc" id="L157">            removedCaptain = removeFirstArtifact(playerCards, Ability.CAPTAIN);</span>
+<span class="nc" id="L158">            match.toDiscardPile(removedCaptain);</span>
+        }
+<span class="nc bnc" id="L160" title="All 2 branches missed.">        for (int i = 0; i &lt; removeCards.get(3); i++) {</span>
+<span class="nc" id="L161">            removedJoker = removeFirstArtifact(playerCards, Ability.JOKER);</span>
+<span class="nc" id="L162">            match.toDiscardPile(removedJoker);</span>
+        }
+<span class="nc" id="L164">    }</span>
+
+    /**
+     * get-Method moveController
+     * @return the moveController to provide with helping methods
+     */
+    public MoveController getMoveController() {
+<span class="nc" id="L171">        return moveController;</span>
+    }
+
+    /**
+     * set-Method moveController
+     * @param moveController the moveController to provide with helping methods
+     */
+    public void setMoveController(MoveController moveController) {
+<span class="nc" id="L179">        this.moveController = moveController;</span>
+<span class="nc" id="L180">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

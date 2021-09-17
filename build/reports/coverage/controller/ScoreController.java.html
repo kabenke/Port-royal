@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="de"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ScoreController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Projekt2</a> &gt; <a href="index.source.html" class="el_package">controller</a> &gt; <span class="el_source">ScoreController.java</span></div><h1>ScoreController.java</h1><pre class="source lang-java linenums">package controller;
+
+import abstractuserinterface.ScoreAUI;
+import model.*;
+
+/**
+ * This class is used to manage score of all players.
+ */
+public class ScoreController {
+
+	/**
+	 * The Main Controller
+	 */
+	private MainController mainController;
+
+	/**
+	 * The ScoreAUI
+	 */
+	private ScoreAUI scoreAUI;
+
+	/**
+	 * Constructor for the ScoreController
+	 * @param mainController Main Controller
+	 */
+<span class="fc" id="L25">	public ScoreController(MainController mainController) {</span>
+<span class="fc" id="L26">		this.mainController = mainController;</span>
+<span class="fc" id="L27">	}</span>
+
+	/**
+	 * Calculate the score of the player
+	 * high score = victory points * 10 + gold + gold of the PersonCards in players hand + swards of the PersonCards in players hand
+	 *              - 0,5 * all the turns the player has made during the game
+	 * @param score - the score of the player
+	 */
+	public void calculateScore(Score score) {
+<span class="nc" id="L36">		Player player = score.getPlayer();</span>
+<span class="nc" id="L37">		int victoryPoints = player.getVictoryPoints();</span>
+<span class="nc" id="L38">		int moves = player.getMoveCount();</span>
+<span class="nc" id="L39">		int gold = player.getGoldCards().size();</span>
+<span class="nc" id="L40">		int swords = player.getSwords();</span>
+<span class="nc" id="L41">		double total = 0.0;</span>
+
+<span class="nc bnc" id="L43" title="All 2 branches missed.">		for (int i = 0; i &lt; player.getNonGoldCards().size(); i++){</span>
+<span class="nc" id="L44">			Card card = player.getNonGoldCards().get(i);</span>
+<span class="nc bnc" id="L45" title="All 2 branches missed.">			if (card instanceof Person) {</span>
+<span class="nc" id="L46">				gold -= card.getCoins();</span>
+			}
+		}
+<span class="nc bnc" id="L49" title="All 2 branches missed.">		if (player.getEligibleForHighscore()) {</span>
+<span class="nc" id="L50">			total = 10 * victoryPoints + gold + 3 * swords - 0.5 * moves;</span>
+<span class="nc" id="L51">			final double ZERO_VALUE = 0.0;</span>
+<span class="nc bnc" id="L52" title="All 2 branches missed.">			if (total &lt; ZERO_VALUE) {</span>
+<span class="nc" id="L53">				total = 0.0;</span>
+			}
+<span class="nc" id="L55">			score.setScore((int) total);</span>
+		}
+<span class="nc" id="L57">	}</span>
+
+	/**
+	 * Get-Method for the mainController
+	 * @return mainController
+	 */
+<span class="nc" id="L63">	public MainController getMainController() { return mainController; }</span>
+
+	/**
+	 * Set-Method for the mainController
+	 * @param mainController mainController
+	 */
+<span class="nc" id="L69">	public void setMainController(MainController mainController) { this.mainController = mainController; }</span>
+
+	/**
+	 * Get-Method for the ScoreAUI
+	 * @return scoreAUI
+	 */
+<span class="nc" id="L75">	public ScoreAUI getScoreAUI() {return scoreAUI;}</span>
+
+	/**
+	 * Set-Method for the ScoreAUI
+	 * @param scoreAUI scoreAUI
+	 */
+<span class="nc" id="L81">	public void setScoreAUI(ScoreAUI scoreAUI) {this.scoreAUI = scoreAUI;}</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

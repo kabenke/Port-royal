@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<fx:root fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+	  <ImageView fitHeight="404.0" fitWidth="497.0" layoutX="392.0" layoutY="209.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/background6.png" />
+         </image>
+      </ImageView>
+      <Label id="font" layoutX="513.0" layoutY="90.0" text="Highscores">
+         <font>
+            <Font name="Sitka Small" size="45.0" />
+         </font>
+      </Label>
+      <Label layoutX="540.0" layoutY="180.0" text="Spieler">
+         <font>
+            <Font name="Sitka Small Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player1" layoutX="540.0" layoutY="220.0" text="Spieler 01">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player2" layoutX="540.0" layoutY="260.0" text="Spieler 02">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player3" layoutX="540.0" layoutY="300.0" text="Spieler 03">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player4" layoutX="540.0" layoutY="340.0" text="Spieler 04">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player5" layoutX="540.0" layoutY="380.0" text="Spieler 05">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player6" layoutX="540.0" layoutY="420.0" text="Spieler 06">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player7" layoutX="540.0" layoutY="460.0" text="Spieler 07">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player8" layoutX="540.0" layoutY="500.0" text="Spieler 08">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player9" layoutX="540.0" layoutY="540.0" text="Spieler 09">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="player10" layoutX="540.0" layoutY="580.0" text="Spieler 10">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="452.0" layoutY="180.0" text="Platz">
+         <font>
+            <Font name="Sitka Small Bold" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz4" layoutX="474.0" layoutY="340.0" text="4">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz5" layoutX="474.0" layoutY="380.0" text="5">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz6" layoutX="474.0" layoutY="420.0" text="6">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz7" layoutX="474.0" layoutY="460.0" text="7">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz8" layoutX="474.0" layoutY="500.0" text="8">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz9" layoutX="474.0" layoutY="540.0" text="9">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label fx:id="platz10" layoutX="464.0" layoutY="580.0" text="10">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="751.0" layoutY="180.0" text="Punkte">
+         <font>
+            <Font name="Sitka Small Bold" size="21.0" />
+         </font>
+      </Label>
+      <Text fx:id="score1" fill="#404040" layoutX="700.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1000" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score2" fill="#404040" layoutX="700.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="900" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score3" fill="#404040" layoutX="700.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="750" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score4" fill="#404040" layoutX="700.0" layoutY="360.0" strokeType="OUTSIDE" strokeWidth="0.0" text="500" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score5" fill="#404040" layoutX="700.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="350" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score6" fill="#404040" layoutX="700.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="200" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score7" fill="#404040" layoutX="700.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" text="150" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score8" fill="#404040" layoutX="700.0" layoutY="520.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score9" fill="#404040" layoutX="700.0" layoutY="560.0" strokeType="OUTSIDE" strokeWidth="0.0" text="75" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <Text fx:id="score10" fill="#404040" layoutX="700.0" layoutY="600.0" strokeType="OUTSIDE" strokeWidth="0.0" text="50" textAlignment="RIGHT" wrappingWidth="130.1036376953125">
+         <font>
+            <Font name="Sitka Small" size="21.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="platz1" fitHeight="35.0" fitWidth="44.0" layoutX="460.0" layoutY="217.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/gold.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="platz2" fitHeight="35.0" fitWidth="44.0" layoutX="460.0" layoutY="255.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/silber.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="platz3" fitHeight="35.0" fitWidth="44.0" layoutX="460.0" layoutY="297.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/bronze.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="backButton" fitHeight="55.0" fitWidth="55.0" layoutX="20.0" layoutY="20.0" onMouseClicked="#onBackClick" onMouseEntered="#onBackEnter" onMouseExited="#onBackExit" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@buttons/arrowLeftButton.png" />
+         </image>
+      </ImageView>
+   </children>
+</fx:root>
